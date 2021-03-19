@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/ion.rangeSlider.min.css">
+    <link rel="stylesheet" href="css/style.css?v=1.33">
+    <title>apartment</title>
+</head>
+<body>
+    <header> 
+        <div class="container">
+            <a href="javascript:;" class="header_logo"><img src="img/logo.svg" alt=""></a>
+            <div class="header_right">
+                <div class="header_top">
+                  <div class="header_quest">
+                    <form class="search" action="">
+                        <input type="search" class="search_input" placeholder="Поиск по сайту..." name="" value="">
+                        <button class="search_btn" type="submit"></button>                    
+                    </form>
+                    <div class="lang_block">
+                        <a href="javascript:;" class="lang_choice"><span>ru</span></a>
+                        <div class="other_lang" style="display: none;">
+                            <a href="javascript:;" class="lang ">kz</a>
+                            <a href="javascript:;" class="lang active">ru</a>
+                            <a href="javascript:;" class="lang ">en</a>
+                        </div>
+                    </div>
+                  </div>
+                  <a href="tel:87078553707" class="header_tel">+7 (707) 855 37 07</a>
+                  <div class="header_icons">
+                    <a class="header_icon " target="_blank" href="javascript:;"><img src="img/face.svg" alt=""></a>
+                    <a class="header_icon" target="_blank" href="javascript:;"><img src="img/youtube.svg" alt=""></a>
+                    <a class="header_icon" target="_blank" href="javascript:;"><img src="img/insta.svg" alt=""></a>                        
+                  </div>
+                  <div class="header_burger">
+                    <div class="mob_menu">
+                        <span class="menu_btn">
+                           <span class="menu_btn_span menu1"></span>
+                           <span class="menu_btn_span menu2"></span>
+                           <span class="menu_btn_span menu3"></span>
+                        </span>
+                     </div>
+                     <div class="under_nav" style="display: none;"></div>
+                </div>
+                </div>
+                <div class="header_bottom">
+                    <ul class="header_ul">
+                        <li><a href="index.html">Главная</a></li>
+                        <li>
+                            <a href="javascript:;">Наши программы<div class="menu_arrow"></div></a>
+                            <div class="sub_menu">
+                                <div class="sub_menu_list">
+                                    <a href="apartment.html" class="sub_link">Квартира</a>
+                                    <a href="auto.html" class="sub_link">Машина</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="question.html">Вопросы и ответы</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                    <a href="javascript:;" id="btn" data-src="#vhod" data-fancybox="" class="header_private">Личный кабинет</a>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- semi carousel  -->   
+<section class="main auto">
+            <div class="main_blog auto">
+                <div class="container">
+                    <div class="main_unit">
+                        <div class="main_title"><span>своя квартира</span> в рассрочку под 0%</div>
+                        <div class="main_subtitle">Как принято считать, представители современных социальных резервов, вне зависимости от их уровня, должны быть в рамках своих собственных рациональных ограничений.</div>
+                        <a data-src="#zayavka" data-fancybox=""  href="javascript:;" class="main_btn">Подать заявку</a>
+                    </div>
+                    <div class="main_pos">
+                        <div class="main_pos_auto">
+                            <img src="img/house1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+<!-- Purchase conditions -->
+<section class="cond">
+    <div class="container">
+        <h1>Условия приобретения</h1>
+        <div class="cond_wrapper">
+                <div class="info_think">
+                    <div class="info_item">
+                        <div class="info_title">Жилищная программа</div>
+                   </div>
+                   <div class="cond_wrap">
+                        <div class="info_wrap info_wrap--apartment">
+                        <div class="info_thought">
+                            <div class="info_subtitle">Вступительный взнос</div>
+                            <div class="info_undertitle">5% от стоймости авто</div>
+                        </div>
+                        <div class="info_thought">
+                            <div class="info_subtitle">первоначальный взнос</div>
+                            <div class="info_undertitle">30% при стоймости авто до 10 000 000 тенге</div>
+                            <div class="info_undertitle">40% от 10 000 000 до 15 000 000 тенге</div>
+                            <div class="info_undertitle">50% от 15 000 000 до 25 000 000 тенге</div>
+                            <div class="info_undertitle">60% от 15 000 000 до 25 000 000 тенге</div>
+                        </div>
+                        <div class="info_thought">
+                            <div class="info_subtitle">срок рассрочки</div>
+                            <div class="info_undertitle">до 5 лет (но не менее 50 000 тенге в месяц)</div>
+                        </div>
+                        <div class="info_thought">
+                            <div class="info_subtitle">ежемесячный членский взнос</div>
+                            <div class="info_undertitle">3 000 тенге</div>
+                        </div>
+                        </div>
+                        <div class="cond_img"><img src="img/apar-min.png" alt=""></div>
+                    </div>
+                </div>
+        </div>
+        <div class="cond_blog">
+            <div class="info_string"><span>1.</span> Приобретаемое жилье должно быть введено в эксплуатацию.</div>
+            <div class="info_string"><span>2.</span> Возможность увеличения суммы вступительного взноса с целью приобретения недвижимости стоимостью выше, чем указано в договоре.</div>
+            <div class="info_string"><span>3.</span> Возможность переуступки прав требования третьему лицу.</div>
+            <div class="info_string"><span>4.</span> Нотариально, только в момент приобретения недвижимости.</div>
+            <div class="info_string"><span>5.</span> Недостоющая сумму от суммы первоначального взноса выделяется в виде рассрочки, срооком до 10 лет.</div>
+        </div>
+    </div>
+</section>
+<!-- stages of acquiring an apartment -->
+<section class="house">
+    <div class="container">
+        <h1>этапы приобретения квартиры</h1>
+        <div class="house_wrapper">
+            <div class="house_blog">
+                <div class="house_blog_img">
+                    <img src="img/apartment_step1.svg">
+                </div>
+                <div class="house_title">Ищем квартиру</div>
+                <div class="house_subtitle">Разнообразный и богатый опыт начало повседневной работы по</div>
+            </div>
+            <div class="house_blog">
+                <div class="house_blog_img">
+                    <img src="img/apartment_step2.svg">
+                </div>
+                <div class="house_title">Подписываем договор</div>
+                <div class="house_subtitle">Разнообразный и богатый опыт начало повседневной работы по</div>
+            </div>
+            <div class="house_blog">
+                <div class="house_blog_img">
+                    <img src="img/apartment_step3.svg">
+                </div>
+                <div class="house_title">Первоначальный взнос</div>
+                <div class="house_subtitle">Разнообразный и богатый опыт начало повседневной работы по</div>
+            </div>
+            <div class="house_blog">
+                <div class="house_blog_img">
+                    <img src="img/apartment_step4.svg">
+                </div>
+                <div class="house_title">Ждем очередь</div>
+                <div class="house_subtitle">Разнообразный и богатый опыт начало повседневной работы по</div>
+            </div>
+            <div class="house_blog">
+                <div class="house_blog_img">
+                    <img src="img/apartment_step5.svg">
+                </div>
+                <div class="house_title">Квартира ваша</div>
+                <div class="house_subtitle">Разнообразный и богатый опыт начало повседневной работы по</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- calculator -->
+<section class="calculatcor">
+    <div class="container">
+        <div class="calc_wrapper">
+            <div class="bg_white">
+              <h2>рассчитайте условия</h2>
+              <div class="calc_blog">
+                  <div class="calc_automobile">
+                      <div class="calc_title">Автомобиль</div>
+                      <div class="calc_change">
+                          <a href="javascript:;" class="calc_btn">Выберите марку автомобиля</a>
+                          <div class="calc_change_under" style="display: none;">
+                              <a href="javascript:;">BMB</a>
+                              <a href="javascript:;">Mercedec</a>
+                              <a href="javascript:;">Audi</a>
+                          </div>
+                      </div>
+                      <div class="calc_tram">
+                          <div class="calc_title">Стоимость автомобиля</div>
+                              <span class="calc_figure"> 
+                                  <span class="money">1000000</span> 
+                                  <input type="text" class="size_change" data-min="500000" data-max="20000000" data-step="100000" data-from="1000000">
+                              </span>
+                      </div>
+                  </div>
+                  <div class="calc_type">
+                      <div class="calc_title">Тип машины</div>
+                      <a href="javascript:;" class="calc_choice active">Новая</a>
+                      <a href="javascript:;" class="calc_choice">Б/У</a>
+                      <div class="calc_tram">
+                          <div class="calc_title">Срок рассрочки</div>
+                              <span class="calc_figure"> 
+                                  <span class="year">2</span> 
+                                  <input type="range" class="size_chane" data-min="1" data-max="5" data-from="2">
+                              </span>
+                      </div>
+                  </div>
+              </div>
+              <a href="javascript:;" class="conditions_btn">Рассчитать условия</a>
+            </div>
+          </div>  
+    </div>
+</section>
+        <!-- carousel -->
+        <section class="carousel">
+            <div class="container">
+                <h1>Отзывы</h1>
+                <div class="car_carоusel">
+                    <div>
+                        <a href="javascript:;" class="carоusel_img" data-src="#carusel_video" data-fancybox="" data-video="https://www.youtube.com/embed/"><img src="img/carusel1-min.png" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="carоusel_img" data-src="#carusel_video" data-fancybox="" data-video="https://www.youtube.com/embed/"><img src="img/carusel2-min.png" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="carоusel_img" data-src="#carusel_video" data-fancybox="" data-video="https://www.youtube.com/embed/"><img src="img/news.png" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="carоusel_img" data-src="#carusel_video" data-fancybox="" data-video="https://www.youtube.com/embed/"><img src="img/carusel1-min.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="slider_unit">
+                    <div class="slider_number" role="toolbar">
+                        <span class="count count_total">1</span>
+                        <span>/</span>
+                        <span class="coun count_current">4</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- our partners -->
+        <section class="partners auto">
+            <div class="container">
+                <h1>наши партнеры</h1>
+                <div class="partners_wrapper">
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part6.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part2.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part3.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part4.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                    <div>
+                        <a href="javascript:;" class="partners_blog" target="_blank"><img src="img/part5.svg" alt=""></a>
+                    </div>
+                </div>
+                <div class="part_blog">
+                    <div class="part_arrow"></div>
+                    <div class="slider_number" role="toolbar">
+                        <span class="count part_total">1</span>
+                        <span >/</span>
+                        <span class="coun part_current">4</span>
+                    </div>
+                </div> 
+            </div>
+        </section>
+        <!-- footer -->
+        <footer>
+            <div class="container">
+                <div class="foo_wrapper">
+                    <div class="foo_top">
+                        <a href="javascript:;" class="foo_img"><img src="img/logo_footer.svg" alt=""></a>
+                        <ul class="footer_ul">
+                            <li><a href="javascript:;">Главная</a></li>
+                            <li><a href="javascript:;">О проекте</a></li>
+                            <li><a href="javascript:;">Вопросы и ответы</a></li>
+                            <li><a href="javascript:;">Новости</a></li>
+                            <li><a href="javascript:;">Галерея</a></li>
+                            <li><a href="javascript:;">Контакты</a></li>
+                        </ul>
+                        <div class="foo_icons">
+                            <a href="javascript:;" class="foo_icon"><img src="img/foo_face.svg" alt=""></a>
+                            <a href="javascript:;" class="foo_icon"><img src="img/foo_youtube.svg" alt=""></a>
+                            <a href="javascript:;" class="foo_icon"><img src="img/foo_insta.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="foo_bottom">
+                        <p>Amanat Drive 2020 © Все права защищены</p>
+                        <p>Разработка сайта <a target="_blank"  href="https://astanacreative.kz/">AstanaCreative</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="fancybox-content" id="zayavka" style="display: none;">
+            <div class="popup-form">
+                <span class="popup-form__heading">Войти</span>
+                <form action="/requests/send" method="POST" class="form">
+                    <div class="popup-row">
+                        <div class="popup-title">Введите логин или эл. почту</div>
+                        <input type="text" required>
+                    </div>
+                    <div class="popup-row">
+                        <div class="popup-title">Введите ваш пароль:</div>
+                        <input type="password" required>
+                    </div>
+                    <button class="popup-sbt" type="submit">Войти</button>
+                    <a href="javascript:;" class="reestablish">Восстановить пароль</a>
+                    <a href="javascript:;"  class="reestablish mt">Зарегистрироваться</a>
+                </form>
+            </div>
+        </div>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/ion.rangeSlider.min.js"></script>
+        <script src="js/jquery.maskedinput.min.js"></script>
+        <script src="js/waypoint.js"></script>
+        <script src="js/script.js?v=1.12"></script>
+    </body>
+    </html>
