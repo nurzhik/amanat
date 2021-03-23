@@ -6,6 +6,8 @@
 	Router::connect('/admin/doctors/edit/*', array('controller' => 'users', 'action' => 'doctors_edit','admin' => true));
 	Router::connect('/feedback', array('controller' => 'feedbacks', 'action' => 'index'));
 	Router::connect('/page/*', array('controller' => 'pages', 'action' => 'index'));
+	Router::connect('/news', array('controller' => 'news', 'action' => 'index'));
+	Router::connect('/news/view/*', array('controller' => 'news', 'action' => 'view'));
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/contacts', array('controller' => 'pages', 'action' => 'contacts'));
 	Router::connect('/registration_page', array('controller' => 'pages', 'action' => 'registration_page'));

@@ -41,18 +41,7 @@ echo $this->Form->create('News', array('type' => 'file'));
     					</div>
     				<?php endif ?>
     			</div>
-          <div class="form-group">
-              <label for="selectRegion">Категория :</label>
-              <select name="data[News][category_id]"  id="selectRegion" class="form-control custom-select">
-                <?php foreach ($categories as $item): ?>
-                   <option value="<?=$item['Category']['id']?>"><?=$item['Category']['title_ru']?></option>
-                <?php endforeach ?>
-               
-               
-               
-               
-              </select> 
-          </div>
+       
     			<div class="form-group">
     				<label for="inputName">Название</label>
     				<input type="text" id="inputName" class="form-control" required="required" name="data[News][title]"  >

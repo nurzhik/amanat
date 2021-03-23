@@ -27,24 +27,7 @@ class Symptom extends AppModel{
 			)
 		)
 	);
-	public $hasAndBelongsToMany = array(
-		'Specialist' => array(
-	       	'className' => 'Specialist',
-            'joinTable' => 'specialists_symptoms',
-            'foreignKey' => 'symptom_id',
-            'associationForeignKey' => 'specialist_id',
-            // 'unique' => true,
-            // 'conditions' => '',
-            // 'fields' => '',
-            // 'order' => '',
-            // 'limit' => '',
-            // 'offset' => '',
-            // 'finderQuery' => '',
-            // 'with' => ''
-	    ),
-       	
-    );
-
+	
 	public function customUploadImg($file = array()){
 		if(!is_uploaded_file($file['img']['tmp_name'])){
 			return false;

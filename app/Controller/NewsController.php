@@ -20,7 +20,7 @@ class NewsController extends AppController{
 		}else{
 			$this->News->locale = 'ru';
 		}
-		$categories = $this->Category->find('all');
+		
 		if($this->request->is('post')){
 			$this->News->create();
 
@@ -127,13 +127,14 @@ class NewsController extends AppController{
 			'offset' => $paginator['offset'],
 			'limit' => $paginator['per_page'],
 		));
+		//debug($data);
 		$this->set(compact('data', 'title_for_layout','paginator'));
 	}
 	
 
 	public function view($id){
 		$this->News->locale = Configure::read('Config.language');
-		$data = $this->News->findById($id);
+		$data = $this->News->findByAlias($id);
 	
 		if(!$data){
 			throw new NotFoundException('Такой страницы нет...');

@@ -68,7 +68,9 @@ class AppController extends Controller {
 		$sidebar = $this->News->find('all', array(
 			'order' => array('News.date' => 'desc')
 		));
-		
+		$partners = $this->Partner->find('all', array(
+			'order' => array('Partner.id' => 'desc')
+		));
 		$this->set(compact('admin', 'lang', 'l', 'login', 'params', 'cookie','login','adminname','sidebar','partners','maps'));
 
 	}

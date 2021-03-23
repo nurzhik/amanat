@@ -87,39 +87,13 @@ class FaqsController extends AppController{
 
 	public function index(){
 		$this->Faq->locale = Configure::read('Config.language');
-		$title_for_layout = 'Новости';
-		$order = array('Faq.sort_order DESC');
-		$paginator = array();
-		$paginator['per_page'] = 9;
-		$paginator['current_page'] = isset($_GET['page']) ? $_GET['page'] : 1;
-		$paginator['offset'] = ($paginator['current_page'] * $paginator['per_page']) - $paginator['per_page'];
-		$paginator['link'] = (isset($_GET['cat'])) ? '?cat='.(int)$_GET['cat'].'&page=' : '?page=';
-		$paginator['count'] = $this->Faq->find('count') - 1;
-		$paginator['count_pages'] = ceil($paginator['count'] / $paginator['per_page']);
-		$paginator['start'] = '';
-		$paginator['end'] = '';
-		$paginator['prev'] = '';
-		$paginator['next'] = '';
-
-
-		if($paginator['current_page'] != 1 && $paginator['current_page'] != 2) {
-			$paginator['start'] = 1;
-		}
-		if($paginator['current_page'] != 1 ) {
-			$paginator['prev'] = $paginator['current_page'] - 1;
-		}
-		if($paginator['current_page'] != $paginator['count_pages'] ) {
-			$paginator['next'] = $paginator['current_page'] + 1;
-		}
-		if($paginator['current_page'] != $paginator['count_pages'] && $paginator['current_page'] != $paginator['count_pages']-1) {
-			$paginator['end'] = $paginator['count_pages'];
-		}
-		$data = $this->Faq->find('all', array(
+		$title_for_layout = 'Вопросы и ответы';
+	
+		$faqs = $this->Faq->find('all', array(
 			'order' => array('Faq.sort_order DESC'),
-			'offset' => $paginator['offset'],
-			'limit' => $paginator['per_page'],
+			
 		));
-		$this->set(compact('data', 'title_for_layout','paginator'));
+		$this->set(compact('faqs', 'title_for_layout','paginator'));
 	}
 	
 

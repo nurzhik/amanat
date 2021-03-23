@@ -73,10 +73,10 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="question.html">Вопросы и ответы</a></li>
-                        <li><a href="news.html">Новости</a></li>
-                        <li><a href="gallery.html">Галерея</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="/<?=$lang?>faqs">Вопросы и ответы</a></li>
+                        <li><a href="/<?=$lang?>news">Новости</a></li>
+                        <li><a href="/<?=$lang?>albuns">Галерея</a></li>
+                        <li><a href="/<?=$lang?>contacts">Контакты</a></li>
                     </ul>
                     <a href="javascript:;" id="btn" data-src="#vhod" data-fancybox="" class="header_private">Личный кабинет</a>
                 </div>
