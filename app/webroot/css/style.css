@@ -12,7 +12,7 @@ header {
     box-shadow: 1px 1px 1px rgb(0 0 0 / 10%);
 }
 .page{
-    padding-top: 160px;
+    padding-top: 150px;
 }
 header .container{
     display: flex;
