@@ -1,63 +1,78 @@
-
-<section class="page gray">
+<div class="container page">
+    <ul class="breadcrumbs">
+        <li class="bread_bg">
+            <a href="javascript:;">Главная</a>
+        </li>
+        <li class="bread_bg">
+            <a href="javascript:;">Новости</a>
+        </li>
+        <li class="bg_bread">
+            <span><?=$data['News']['title']?></span>
+        </li>
+    </ul>
+</div>
+<!-- news inner -->
+<section class="news_inner">
     <div class="container">
-        <div class="title title_left"><?=$data['News']['title']?></div>
-        <div class="news_inner">
-            <div class="news_inner_content">
-                <div class="news_inner_img">
-                    <img src="/img/news/<?=$data['News']['img']?>" alt="">
-                </div>
-                <div class="text_item">
-                    <?=$data['News']['short_desc']?>
-                    <?=$data['News']['body']?>
-                </div>
-                <div class="news_share">
-                    <div class="news_share_text">Поделиться</div>
-                    <script src="https://yastatic.net/share2/share.js"></script>
-                    <div class="ya-share2" data-curtain data-services="vkontakte,facebook,telegram,whatsapp"></div>
-                </div>
-            </div>
-            <div class="news_inner_sidebar">
-                <div class="sidebar_news">
-                    <?php foreach ($other_news as $item):?>
-                        <div class="news_item">
-                            <a class="news_img" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">
-                                <img src="/img/news/<?=$item['News']['img']?>" alt="">
-                            </a>
-                            <div class="news_text">
-                                <div class="news_type"><?php echo $this->Common->get_category($item['News']['category_id']);?> </div>
-                                <a class="news_name" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">      <?php echo $item['News']['title']; ?>
-                                </a>
-                                <div class="text_item">
-                                    <?php echo $item['News']['short_text']; ?>
-                                </div>
-                                <a class="news_more" href="/<?=$lang?>news/view/<?=$item['News']['id']?>"><?=__('Подробнее')?></a>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-            </div>
-        </div>
-        <div class="title title_left">Другие новости</div>
-        <div class="news news_inner_list">
-            <?php foreach ($other_news as $item):?>
-                <div class="news_item">
-                    <a class="news_img" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">
-                        <img src="/img/news/<?=$item['News']['img']?>" alt="">
-                    </a>
-                    <div class="news_text">
-                        <div class="news_type"><?php echo $this->Common->get_category($item['News']['category_id']);?> </div>
-                        <a class="news_name" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">      <?php echo $item['News']['title']; ?>
-                        </a>
-                        <div class="text_item">
-                            <?php echo $item['News']['short_text']; ?>
-                        </div>
-                        <a class="news_more" href="/<?=$lang?>news/view/<?=$item['News']['id']?>"><?=__('Подробнее')?></a>
+        <div class="news_inner_wrapper">
+            <div class="news_inner_blog">
+                <div class="news_inner_img"><img src="img/news1.png" alt=""></div>
+                <div class="news_inner_item">
+                    <h1><?=$data['News']['title']?></h1>
+                    <div class="news_inner_point">
+                        <div class="news_data"><?php echo $this->Time->format($data['News']['date'], '%d.%m.%Y', 'invalid'); ?></div>
+                        <div class="news_data num">22</div>
                     </div>
                 </div>
-            <?php endforeach ?>
-            
-            <!--  -->
+                <div class="news_inner_subtitle">Товарищи! укрепление и развитие структуры требуют от нас анализа направлений прогрессивного развития. С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке существенных финансовых и административных условий. Равным образом постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение соответствующий условий активизации. Товарищи! реализация намеченных плановых заданий представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке форм развития.
+                </div>
+                <div class="news_inner_text">
+                    <div class="news_inner_title">Задача организации, в особенности же рамки и место обучения кадров играет важную роль в формировании соответствующий условий активизации.</div>
+                </div>
+                <div class="news_inner_subtitle">Задача организации, в особенности же рамки и место обучения кадров играет важную роль в формировании соответствующий условий активизации. Таким образом постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании модели развития.</div>
+                <div class="news_inner_subtitle">  Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание дальнейших направлений развития. Равным образом сложившаяся структура организации требуют определения и уточнения дальнейших направлений развития. Разнообразный и богатый опыт консультация с широким активом играет важную роль в формировании соответствующий условий активизации.</div>
+            </div>
+            <div class="news_inner_unit">
+                <div class="news_inner_share">
+                <div class="news_inner_shrink">
+                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink1.svg" alt=""></a>
+                    <div class="news_inner_shrink_item">
+                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
+                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
+                        <div class="news_data">16.08.2020</div>
+                    </div>
+                </div>
+                <div class="news_inner_shrink">
+                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink2.svg" alt=""></a>
+                    <div class="news_inner_shrink_item">
+                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
+                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
+                        <div class="news_data">16.08.2020</div>
+                    </div>
+                </div>
+                <div class="news_inner_shrink">
+                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink3.svg" alt=""></a>
+                    <div class="news_inner_shrink_item">
+                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
+                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
+                        <div class="news_data">16.08.2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="news_inner_share">
+                <div class="news_inner_bottom">
+                    <a href="javascript:;" class="news_inner_bottom_img"><img src="img/news4.png" alt=""></a>
+                    <div class="news_data">16.08.2020</div>
+                    <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
+                </div>
+                <div class="news_inner_bottom">
+                    <a href="javascript:;" class="news_inner_bottom_img"><img src="img/news3.png" alt=""></a>
+                    <div class="news_data">16.08.2020</div>
+                    <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </section>
+<!-- footer -->
