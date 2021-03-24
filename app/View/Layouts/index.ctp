@@ -63,7 +63,7 @@
                 </div>
                 <div class="header_bottom">
                     <ul class="header_ul">
-                        <li><a href="">Главная</a></li>
+                        <li><a href="/">Главная</a></li>
                         <li>
                             <a href="javascript:;">Наши программы<div class="menu_arrow"></div></a>
                             <div class="sub_menu">
@@ -128,7 +128,7 @@
                 </div>
                 <button href="personal.html" class="popup-sbt" type="submit">Войти</button>
                 <a href="javascript:;" class="reestablish">Восстановить пароль</a>
-                <a href="javascript:;"  class="reestablish mt">Зарегистрироваться</a>
+                <a href="users/registration"  class="reestablish mt">Зарегистрироваться</a>
             </form>
         </div>
     </div>
