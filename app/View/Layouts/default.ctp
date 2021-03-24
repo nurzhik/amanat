@@ -92,8 +92,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
               </li>  
             
          
-              
-             
+              <li class="nav-item">
+                <a href="/admin/peoples" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Пайщики
+                  </p>
+                </a>
+              </li>
+             <li class="nav-item">
+                <a href="/admin/cars" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Машины
+                  </p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="/admin/advantages" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
@@ -106,25 +120,64 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <a href="/admin/news" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Полезные статьи 
+                    Новости 
+                  </p>
+                </a>
+              </li>
+            	<li class="nav-item">
+                <a href="/admin/partners" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Партнеры
                   </p>
                 </a>
               </li>
             
-            
               <li class="nav-item">
-                <a href="/admin/symptoms" class="nav-link">
+                <a href="/admin/albums" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Симатомы
+                    Галерея
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/specialists" class="nav-link">
+	            <a href="#" class="nav-link active">
+	              <i class="nav-icon fas fa-tree"></i>
+	              <p>
+	               Контакты
+	                <i class="fas fa-angle-left right"></i>
+	              </p>
+	            </a>
+	            <ul class="nav nav-treeview" style="display: none;">
+	              <li class="nav-item">
+	                <a href="/admin/cities" class="nav-link">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Города</p>
+	                </a>
+	              </li>
+	              <li class="nav-item">
+	                <a href="/admin/branches" class="nav-link">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Филиалы</p>
+	                </a>
+	              </li>
+	             
+	            </ul>
+	          </li>
+	          <li class="nav-item">
+                <a href="/admin/questionnaires" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Специальности
+                    Опросники
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/faqs" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Вопросы и ответы
                   </p>
                 </a>
               </li>

@@ -49,16 +49,30 @@ class PagesController extends AppController {
 
 	
 	public function home(){
-			
 		$this->Advantage->locale = Configure::read('Config.language');
-		
+		$this->Setting->locale = Configure::read('Config.language');
+		$page = $this->Setting->find('first');
+		$reviews =$this->Review->find('all');
 		$advantages = $this->Advantage->find('all', array(
 			'conditions' => array('Advantage.type_id ' => 1),
 			
 		));
 	
 		$title_for_layout ='Главная';
-		$this->set(compact('title_for_layout' ,'symptoms_query','advantages','symptoms'));
+		$this->set(compact('title_for_layout' ,'symptoms_query','advantages','page','reviews'));
+	}
+	public function auto(){
+		$this->Advantage->locale = Configure::read('Config.language');
+		$this->Setting->locale = Configure::read('Config.language');
+		$page = $this->Setting->find('first');
+		$reviews =$this->Review->find('all');
+		$advantages = $this->Advantage->find('all', array(
+			'conditions' => array('Advantage.type_id ' => 1),
+			
+		));
+	
+		$title_for_layout ='Главная';
+		$this->set(compact('title_for_layout' ,'symptoms_query','advantages','page','reviews'));
 	}
 	public function about(){
 			

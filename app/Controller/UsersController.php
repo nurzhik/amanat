@@ -447,7 +447,50 @@ class UsersController extends AppController{
 			$this->set(compact('id', 'data',  'city_list', 'title_for_layout'));
 		}
 	}
-	
+	public function admin_peoples(){
+		
+		
+		$data = $this->User->find('all', array(
+			'conditions' => array('role' =>'user'  ),
+			'order' => array('id' => 'desc')
+		));
+		$this->set(compact('data'));
+	}
+	public function admin_peoples_edit($id){
+		if(is_null($id) || !(int)$id || !$this->User->exists($id)){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$data = $this->User->findById($id);
+		$user_id = $id;
+		if(!$id){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		
+		if($this->request->is(array('post', 'put'))){
+		
+			$data1 = $this->request->data;
+			// $data2 = $this->request->data;
+			$eee = "UPDATE  `users` SET `active` = '". $data1['active'] . "' WHERE `users`.`id` = $id ";
+				
+			if($this->User->query($eee)){
+				
+				$this->Session->setFlash('Операция выполнена успешно!', 'default', array(), 'good');
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', array(), 'bad');
+			}
+		}
+
+		$this->set(compact('id', 'data', 'category_list','user_id', 'specialists', 'title_for_layout'));
+
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$title_for_layout = 'Редактирование';
+			//$category_list = $this->User->Category->find('list');
+			
+		}
+	}
 	public function isActive() {
 
 	}
@@ -557,7 +600,8 @@ class UsersController extends AppController{
 			// = $item;
 			# code...
 		}
-
+		//debug($cars);
+		//debug($turns[1]);die;
 		//debug($turns);die;
 		// $id = $car['Car']['order_num'];
 		// $prevElement = $car['Car']['order_num'] - 3;

@@ -21,7 +21,7 @@
     <div class="card-header">
       <h3 class="card-title">Отзывы</h3>
       <div class="card-tools">
-        <a href="/admin/reviews/add?lang=ru" class="btn  btn-success">Добавить новый материал</a>
+        <a href="/admin/reviews/add" class="btn  btn-success">Добавить новый материал</a>
       </div>
 		
     </div>
@@ -65,16 +65,12 @@
     						<span class="badge badge-success">Добавлен</span>
     					</td>
     					<td class="project-actions text-right">
-    						<a class="btn btn-info btn-sm" href="/admin/reviews/edit/<?=$item['Review']['id']?>?lang=ru">
+    						<a class="btn btn-info btn-sm" href="/admin/reviews/edit/<?=$item['Review']['id']?>">
     							<i class="fas fa-pencil-alt">
     							</i>
-    							Рус
+    							Редактировать
     						</a>
-                <a class="btn btn-info btn-sm" href="/admin/reviews/edit/<?=$item['Review']['id']?>?lang=kz">
-                  <i class="fas fa-pencil-alt">
-                  </i>
-                  Кз
-                </a>
+                
                 
     		
     						<?php echo $this->Form->postLink('Удалить', array('action' => 'admin_delete', $item['Review']['id']), array('confirm' => 'Подтвердите удаление','value'=>'465','class' => 'btn btn-danger btn-sm')); ?>

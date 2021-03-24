@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Список Докторов</h1>
+        <h1>Список Пайщиков</h1>
       </div>
       <div class="col-sm-6">
         
@@ -18,7 +18,7 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Список Докторов</h3>
+      <h3 class="card-title">Список Пайщиков</h3>
       <!-- <div class="card-tools">
         <a href="/admin/news/add?lang=ru" class="btn  btn-success">Добавить новый материал</a>
       </div> -->
@@ -45,7 +45,7 @@
 		 	    <?php foreach($data as $item): ?>
 			 		<tr>
 				 		<td><?=$item['User']['id']?></td>
-				 		<td> <a href="/admin/doctors/edit/<?=$item['User']['id']?>"><?=$item['User']['username']?></a></td>
+				 		<td> <a href="/admin/peoples/edit/<?=$item['User']['id']?>"><?=$item['User']['username']?></a></td>
 				 		<td><?php echo $this->Time->format($item['User']['created'], '%d.%m.%Y %H:%M:%S', 'invalid'); ?></td>
 				 	
 			 			<td>

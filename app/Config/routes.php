@@ -2,8 +2,8 @@
 
 	Router::connect('/admin/users/:action', array('controller' => 'users','admin' => true));
 	Router::connect('/admin', array('controller' => 'pages', 'action' => 'welcome', 'admin' => true));
-	Router::connect('/admin/doctors', array('controller' => 'users', 'action' => 'doctors','admin' => true));
-	Router::connect('/admin/doctors/edit/*', array('controller' => 'users', 'action' => 'doctors_edit','admin' => true));
+	Router::connect('/admin/peoples', array('controller' => 'users', 'action' => 'peoples','admin' => true));
+	Router::connect('/admin/peoples/edit/*', array('controller' => 'users', 'action' => 'peoples_edit','admin' => true));
 	Router::connect('/feedback', array('controller' => 'feedbacks', 'action' => 'index'));
 	Router::connect('/page/*', array('controller' => 'pages', 'action' => 'index'));
 	Router::connect('/news', array('controller' => 'news', 'action' => 'index'));

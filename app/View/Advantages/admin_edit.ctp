@@ -57,8 +57,8 @@ echo $this->Form->create('Advantage', array('type' => 'file'));
               <label for="selectRegion">Страница :</label>
               <select name="data[Advantage][type_id]"  id="selectRegion" class="form-control custom-select">
                 <option value="1" <?=  ($data['Advantage']['type_id']  == 1) ? 'selected' : '' ?> >Главная страница</option>
-                <option value="2" <?=  ($data['Advantage']['type_id']  == 2) ? 'selected' : '' ?>>О нас</option>
-                <option value="3" <?=  ($data['Advantage']['type_id']  == 3) ? 'selected' : '' ?>>Партнерам</option>
+                <option value="2" <?=  ($data['Advantage']['type_id']  == 2) ? 'selected' : '' ?>>Машина</option>
+                <option value="3" <?=  ($data['Advantage']['type_id']  == 3) ? 'selected' : '' ?>>Квартира</option>
                
               </select> 
           </div>

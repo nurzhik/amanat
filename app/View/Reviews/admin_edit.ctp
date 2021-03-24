@@ -31,7 +31,24 @@ echo $this->Form->create('Review', array('type' => 'file'));
     				<label for="inputName">Ссылка</label>
     				<input type="text" id="inputName" class="form-control"  required="required" name="data[Review][link]" value=" <?=(!empty($data['Review']['link'])) ? $data['Review']['link'] : '' ?>" >
     			</div>
-        
+          <div class="form-group ">
+              <label for="reviewimg">Картинка  </label>
+              <?php if(!empty($data['Review']['img'])): ?>
+                <div class="model_info_img">
+                  <div class="model_item_container">
+                    <div class="model_item">
+                        <img src="/img/reviews/<?=$data['Review']['img']?>">
+                    </div>
+                  </div>
+                </div>
+              <?php endif ?>
+              <div class="input-group">
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="reviewimg" name="data[Review][img]" />
+                      <label class="custom-file-label" for="reviewimg"></label>
+                  </div>
+              </div>
+          </div>
         </div>
         <!-- /.card-body -->
       </div>

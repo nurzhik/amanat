@@ -3,9 +3,25 @@
 class Setting extends AppModel{
 	public $actsAs = array(
 		'Translate' => array(
-			'partner_title',
-			'partner_text',
-			'about_text',
+			'old_car_entrance',
+			'old_car_initial',
+			'old_car_time',
+			'old_car_membership',
+			'new_car_entrance',
+			'new_car_initial',
+			'new_car_time',
+			'new_car_membership',
+			'home_entrance',
+			'home_initial',
+			'home_time',
+			'home_membership',
+			'home_text',
+			'main_title',
+			'main_desc',
+			'auto_title',
+			'auto_desc',
+			'home_title',
+			'home_desc',
 			)
 	);
 	

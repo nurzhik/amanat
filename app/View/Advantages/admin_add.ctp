@@ -54,8 +54,8 @@ echo $this->Form->create('Advantage', array('type' => 'file'));
               <label for="selectRegion">Страница :</label>
               <select name="data[Advantage][type_id]"  id="selectRegion" class="form-control custom-select">
                 <option value="1"  >Главная страница</option>
-                <option value="2" >О нас</option>
-                <option value="3" >Партнерам</option>
+                <option value="2" >Машина</option>
+                <option value="3" >Квартира</option>
                
               </select> 
           </div>
