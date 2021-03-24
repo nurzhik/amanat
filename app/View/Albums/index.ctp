@@ -1,54 +1,36 @@
-<section class="page full_section">
+<div class="page">
+<section class="gallery">
     <div class="container">
-        <div class="title title_left">Вопросы и ответы</div>
-        <div class="faq">
-            <?php foreach ($data as $item):?>
-                <div class="faq_item">
-                    <div class="faq_question"><?php echo $item['Faq']['title']; ?></div>
-                    <div class="faq_answer">
-                        <div class="text_item">
-                            <?php echo $item['Faq']['body']; ?>
-                        </div>
+        <h1>галерея</h1>
+        <div class="gallery_wrapper">
+            <?php foreach ($data as $item): ?>
+                <div class="gallery_blog">
+                    <a href="/albums/view/<?=$item['Album']['id'] ?>" class="gallery_img"><img src="/img/albums/<?=$item['Album']['img'] ?>" alt=""></a>
+                    <div class="gallery_item">
+                        <div class="news_data"><?php echo $this->Time->format($item['Album']['date'], '%d.%m.%Y', 'invalid'); ?></div>
+                        <div class="gallery_title"><?=$item['Album']['title'] ?></div>
+                        <a href="/albums/view/<?=$item['Album']['id'] ?>" class="gall_more">Смотреть альбом</a>
                     </div>
                 </div>
             <?php endforeach ?>
             
+            
         </div>
+        
+        <ul class="pagination">     
+            <li><?php echo $this->Paginator->first('<<'); ?></li>
+            <!-- <ul class="pag_list"> -->
+            <?php echo $this->Paginator->numbers(
+                array(
+                    'separator' => '',
+                    'tag' => 'li',
+                    'modulus' => 4
+                    )
+            ); ?>
+            <!-- </ul> -->
+            <li><?php echo $this->Paginator->last('>>'); ?></li>
+        </ul>
     </div>
 </section>
-
-<section class="gray">
-    <div class="container">
-        <div class="title">Поделиться в социальных сетях</div>
-        <div class="page_share">
-            <div class="share_list">
-                <a class="share_link telegram_share" href="javascript:;" rel="nofollow noopener" target="_blank" title="Telegram">
-                    <div class="share_img">
-                        <img src="img/telegram.svg" alt="">
-                    </div>
-                    <div class="share_text">Telegram</div>
-                </a>
-                <a class="share_link wp_share" href="javascript:;" rel="nofollow noopener" target="_blank" title="WhatsApp">
-                    <div class="share_img">
-                        <img src="img/whatsapp.svg" alt="">
-                    </div>
-                    <div class="share_text">WhatsApp</div>
-                </a>
-                <a class="share_link vk_share" href="javascript:;" rel="nofollow noopener" target="_blank" title="ВКонтакте">
-                    <div class="share_img">
-                        <img src="img/vk.svg" alt="">
-                    </div>
-                    <div class="share_text">VKontakte</div>
-                </a>
-                <a class="share_link facebook_share" href="javascript:;" rel="nofollow noopener" target="_blank" title="Facebook">
-                    <div class="share_img">
-                        <img src="img/facebook_white.svg" alt="">
-                    </div>
-                    <div class="share_text">Facebook</div>
-                </a>
-            </div>
-            <script src="https://yastatic.net/share2/share.js"></script>
-            <div class="ya-share2" data-curtain data-services="vkontakte,facebook,telegram,whatsapp"></div>
-        </div>
-    </div>
-</section>
+ <?=$this->element('partners') ?>
+</div>

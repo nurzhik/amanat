@@ -17,14 +17,27 @@
                 </div>
             <?php endforeach ?>
         </div>
-        <div class="pagination">
+        <ul class="pagination">     
+            <li><?php echo $this->Paginator->first('<<'); ?></li>
+            <!-- <ul class="pag_list"> -->
+            <?php echo $this->Paginator->numbers(
+                array(
+                    'separator' => '',
+                    'tag' => 'li',
+                    'modulus' => 4
+                    )
+            ); ?>
+            <!-- </ul> -->
+            <li><?php echo $this->Paginator->last('>>'); ?></li>
+        </ul>
+       <!--  <div class="pagination">
             <a class="pag pag_prev" href="javascript:;"></a>
             <a class="pag active" href="javascript:;">1</a>
             <a class="pag now" href="javascript:;">2</a>
             <a class="pag now" href="javascript:;">3</a>
             <a class="pag now" href="javascript:;">4</a>
             <a class="pag pag_next" href="javascript:;"></a>
-          </div>
+          </div> -->
     </div>
 </section>
  <?=$this->element('partners') ?>

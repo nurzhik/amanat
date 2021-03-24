@@ -75,7 +75,7 @@
                         </li>
                         <li><a href="/<?=$lang?>faqs">Вопросы и ответы</a></li>
                         <li><a href="/<?=$lang?>news">Новости</a></li>
-                        <li><a href="/<?=$lang?>albuns">Галерея</a></li>
+                        <li><a href="/<?=$lang?>albums">Галерея</a></li>
                         <li><a href="/<?=$lang?>contacts">Контакты</a></li>
                     </ul>
                     <a href="javascript:;" id="btn" data-src="#vhod" data-fancybox="" class="header_private">Личный кабинет</a>

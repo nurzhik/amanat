@@ -72,77 +72,80 @@ echo $this->Form->create('Album', array('type' => 'file'));
      
     </div>
   </div>
-  <div class="row" style="margin-top: 50px">
-    <div class="col-md-12">
-      <div class="card card-secondary">
-        <div class="card-header">
-                <h3 class="card-title">Картинки</h3>
+  <?php if(isset($this->request->query['lang']) && $this->request->query['lang'] == 'ru'): ?>
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-12">
+          <div class="card card-secondary">
+            <div class="card-header">
+                    <h3 class="card-title">Картинки</h3>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-          <form action="/admin/albums/addimage" id="tarifs/addForm" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="mb-4">
-            <div style="display:none;">
-              <input type="hidden" name="_method" value="POST">
-            </div>
-            <div style="display:none;">
-              <input type="hidden" name="data[Gallery][album_id]" value="<?=(!empty($data['Album']['id'])) ? $data['Album']['id'] : '' ?>">
-            </div>
-            <div class="form-group">
-                <label for="video_link">Ссылка видео</label>
-                <input type="text" id="video_link" class="form-control" name="data[Gallery][video]" value="<?=(!empty($data['Gallery']['video'])) ? $data['Gallery']['video'] : '' ?>">
-            </div>
-            <div class="form-group ">
-              <label for="reviewimg">Картинка  </label>
-              <div class="input-group">
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="reviewimg" name="data[Gallery][img]" />
-                      <label class="custom-file-label" for="reviewimg"></label>
+                <div class="card-body">
+              <form action="/admin/albums/addimage" id="tarifs/addForm" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="mb-4">
+                <div style="display:none;">
+                  <input type="hidden" name="_method" value="POST">
+                </div>
+                <div style="display:none;">
+                  <input type="hidden" name="data[Gallery][album_id]" value="<?=(!empty($data['Album']['id'])) ? $data['Album']['id'] : '' ?>">
+                </div>
+                <div class="form-group">
+                    <label for="video_link">Ссылка видео</label>
+                    <input type="text" id="video_link" class="form-control" name="data[Gallery][video]" value="<?=(!empty($data['Gallery']['video'])) ? $data['Gallery']['video'] : '' ?>">
+                </div>
+                <div class="form-group ">
+                  <label for="reviewimg">Картинка  </label>
+                  <div class="input-group">
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="reviewimg" name="data[Gallery][img]" />
+                          <label class="custom-file-label" for="reviewimg"></label>
+                      </div>
                   </div>
-              </div>
-            </div>
-          
-          <div class="submit"><input type="submit"  class="btn btn-success " value="Добавить"></div>
-        </form>
-        <table class="table border">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Картина</th>
-              <th>Ссылка видео</th>
-              <th>Операции</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($images as $item) : ?>
-            <tr>
-                <td><?=$item['Gallery']['id']; ?></td>
-                <td>
-                  <img src="/img/galleries/<?=$item['Gallery']['img']; ?>" style="max-width: 200px" alt="">
-                </td>
-                 <td><?=$item['Gallery']['video']; ?></td>
-                <td class="text-middle py-0 align-middle">
-                  <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-info btn-sm edit_button" data-toggle="modal" data-target="#modal-primary" data-id="<?=$item['Gallery']['id']; ?>" data-video_link="<?=$item['Gallery']['video']; ?>">
-                      Редактировать
-                    </button>
-                    <div class="news_del" style="margin-left: 15px">  
-                      <?php echo $this->Form->postLink('Удалить', array('controller' => 'abouts', 'action' => 'admin_deleteimage', $item['Gallery']['id']), array('confirm' => 'Подтвердите удаление','class' => 'btn btn-danger btn-sm')); ?>
-                    </div> 
-                  </div>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+                </div>
+              
+              <div class="submit"><input type="submit"  class="btn btn-success " value="Добавить"></div>
+            </form>
+            <table class="table border">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Картина</th>
+                  <th>Ссылка видео</th>
+                  <th>Операции</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($images as $item) : ?>
+                <tr>
+                    <td><?=$item['Gallery']['id']; ?></td>
+                    <td>
+                      <img src="/img/galleries/<?=$item['Gallery']['img']; ?>" style="max-width: 200px" alt="">
+                    </td>
+                     <td><?=$item['Gallery']['video']; ?></td>
+                    <td class="text-middle py-0 align-middle">
+                      <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-info btn-sm edit_button" data-toggle="modal" data-target="#modal-primary" data-id="<?=$item['Gallery']['id']; ?>" data-video_link="<?=$item['Gallery']['video']; ?>">
+                          Редактировать
+                        </button>
+                        <div class="news_del" style="margin-left: 15px">  
+                          <?php echo $this->Form->postLink('Удалить', array('controller' => 'abouts', 'action' => 'admin_deleteimage', $item['Gallery']['id']), array('confirm' => 'Подтвердите удаление','class' => 'btn btn-danger btn-sm')); ?>
+                        </div> 
+                      </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
-  </div>
+  <?php endif ?>
+  
 </section>
 <div class="modal fade" id="modal-primary" style="display: none;" aria-hidden="true">
   <div class="modal-dialog">

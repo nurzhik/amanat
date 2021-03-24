@@ -63,6 +63,14 @@
 		array('controller' => 'news', 'action' => 'view'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/albums', 
+		array('controller' => 'albums', 'action' => 'index'),
+		array('language' => '[a-z]{2}')
+	);
+	Router::connect('/:language/albums/*', 
+		array('controller' => 'albums', 'action' => 'view'),
+		array('language' => '[a-z]{2}')
+	);
 
 	Router::connect('/:language/page/*', 
 		array('controller' => 'pages', 'action' => 'index'),

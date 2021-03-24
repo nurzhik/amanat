@@ -132,16 +132,16 @@ class NewsController extends AppController{
 	}
 	
 
-	public function view($id){
+	public function view($alias){
 		$this->News->locale = Configure::read('Config.language');
-		$data = $this->News->findByAlias($id);
+		$data = $this->News->findByAlias($alias);
 	
 		if(!$data){
 			throw new NotFoundException('Такой страницы нет...');
 		}
-
+		$this->News->query("UPDATE `news` SET `view` = `view` + 1 WHERE `alias`='" . $alias . "'");
 		$other_news = $this->News->find('all', array(
-			'conditions' => array(array('News.id !=' => $id)),
+			'conditions' => array(array('News.id !=' => $data['News']['id'])),
 			'limit' => 6,
 		));
 		$title_for_layout = $data['News']['title'];

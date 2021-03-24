@@ -1,63 +1,45 @@
-
-<section class="page gray">
+<section class="gallery_inner page">
     <div class="container">
-        <div class="title title_left"><?=$data['News']['title']?></div>
-        <div class="news_inner">
-            <div class="news_inner_content">
-                <div class="news_inner_img">
-                    <img src="/img/news/<?=$data['News']['img']?>" alt="">
-                </div>
-                <div class="text_item">
-                    <?=$data['News']['short_desc']?>
-                    <?=$data['News']['body']?>
-                </div>
-                <div class="news_share">
-                    <div class="news_share_text">Поделиться</div>
-                    <script src="https://yastatic.net/share2/share.js"></script>
-                    <div class="ya-share2" data-curtain data-services="vkontakte,facebook,telegram,whatsapp"></div>
-                </div>
-            </div>
-            <div class="news_inner_sidebar">
-                <div class="sidebar_news">
-                    <?php foreach ($other_news as $item):?>
-                        <div class="news_item">
-                            <a class="news_img" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">
-                                <img src="/img/news/<?=$item['News']['img']?>" alt="">
-                            </a>
-                            <div class="news_text">
-                                <div class="news_type"><?php echo $this->Common->get_category($item['News']['category_id']);?> </div>
-                                <a class="news_name" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">      <?php echo $item['News']['title']; ?>
-                                </a>
-                                <div class="text_item">
-                                    <?php echo $item['News']['short_text']; ?>
-                                </div>
-                                <a class="news_more" href="/<?=$lang?>news/view/<?=$item['News']['id']?>"><?=__('Подробнее')?></a>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-            </div>
-        </div>
-        <div class="title title_left">Другие новости</div>
-        <div class="news news_inner_list">
-            <?php foreach ($other_news as $item):?>
-                <div class="news_item">
-                    <a class="news_img" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">
-                        <img src="/img/news/<?=$item['News']['img']?>" alt="">
-                    </a>
-                    <div class="news_text">
-                        <div class="news_type"><?php echo $this->Common->get_category($item['News']['category_id']);?> </div>
-                        <a class="news_name" href="/<?=$lang?>news/view/<?=$item['News']['id']?>">      <?php echo $item['News']['title']; ?>
-                        </a>
-                        <div class="text_item">
-                            <?php echo $item['News']['short_text']; ?>
-                        </div>
-                        <a class="news_more" href="/<?=$lang?>news/view/<?=$item['News']['id']?>"><?=__('Подробнее')?></a>
-                    </div>
-                </div>
+        <ul class="breadcrumbs">
+            <li class="bread_bg">
+                <a href="/<?=$lang?>">Главная</a>
+            </li>
+            <li class="bread_bg">
+                <a href="/<?=$lang?>albums">Галерея</a>
+            </li>
+            <li class="bg_bread">
+                <span><?=$data['Album']['title']?></span>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1><?=$data['Album']['title']?></h1>
+        <div class="gallery_inner_wrapper">
+            <?php foreach ($galleries as $item): ?>
+                <?php if($item['Gallery']['video']): ?>
+                 <div class="gallery_inner_blog" data-fancybox  href="<?=$item['Gallery']['video']?>"><img src="/img/galleries/<?=$item['Gallery']['img']?>" alt=""></div>
+                 <?php else: ?>
+                      <div class="gallery_inner_blog" data-fancybox="gall" data-src="/img/galleries/<?=$item['Gallery']['img']?>"><img src="/img/galleries/<?=$item['Gallery']['img']?>" alt=""></div>
+                 <?php endif ?>
             <?php endforeach ?>
-            
-            <!--  -->
+        </div>
+        <div class="gallery_inner_unit">
+            <a href="/<?=$lang?>albums" class="main_btn">назад к альбому</a>
+            <ul class="pagination">     
+                <li><?php echo $this->Paginator->first('<<'); ?></li>
+                <!-- <ul class="pag_list"> -->
+                <?php echo $this->Paginator->numbers(
+                    array(
+                        'separator' => '',
+                        'tag' => 'li',
+                        'modulus' => 4
+                        )
+                ); ?>
+                <!-- </ul> -->
+                <li><?php echo $this->Paginator->last('>>'); ?></li>
+            </ul>
         </div>
     </div>
 </section>
+    <!-- our partners -->
+ <?=$this->element('partners') ?>

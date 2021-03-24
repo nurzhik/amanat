@@ -2,6 +2,7 @@
 
 class AlbumsController extends AppController{
 	public $uses = array('Category', 'Album','Gallery');
+	public $components = array('Paginator');
 	public function admin_index(){
 		$this->Album->locale = array('en', 'kz');
 		$this->Album->bindTranslation(array('title' => 'titleTranslation'));
@@ -73,7 +74,9 @@ class AlbumsController extends AppController{
 		//Заполняем данные в форме
 		if(!$this->request->data){
 			$this->request->data = $data;
-			$images = $this->Gallery->find('all');
+			$images = $this->Gallery->find('all', array(
+			'conditions' => array('Gallery.album_id' =>$id)
+		));
 			$this->set(compact('id', 'data','images'));
 		}
 	}
@@ -216,37 +219,12 @@ class AlbumsController extends AppController{
 	public function index(){
 		$this->Album->locale = Configure::read('Config.language');
 		$title_for_layout = 'Новости';
-		$order = array('Album.sort_order DESC');
-		$paginator = array();
-		$paginator['per_page'] = 9;
-		$paginator['current_page'] = isset($_GET['page']) ? $_GET['page'] : 1;
-		$paginator['offset'] = ($paginator['current_page'] * $paginator['per_page']) - $paginator['per_page'];
-		$paginator['link'] = (isset($_GET['cat'])) ? '?cat='.(int)$_GET['cat'].'&page=' : '?page=';
-		$paginator['count'] = $this->Album->find('count') - 1;
-		$paginator['count_pages'] = ceil($paginator['count'] / $paginator['per_page']);
-		$paginator['start'] = '';
-		$paginator['end'] = '';
-		$paginator['prev'] = '';
-		$paginator['next'] = '';
-
-
-		if($paginator['current_page'] != 1 && $paginator['current_page'] != 2) {
-			$paginator['start'] = 1;
-		}
-		if($paginator['current_page'] != 1 ) {
-			$paginator['prev'] = $paginator['current_page'] - 1;
-		}
-		if($paginator['current_page'] != $paginator['count_pages'] ) {
-			$paginator['next'] = $paginator['current_page'] + 1;
-		}
-		if($paginator['current_page'] != $paginator['count_pages'] && $paginator['current_page'] != $paginator['count_pages']-1) {
-			$paginator['end'] = $paginator['count_pages'];
-		}
-		$data = $this->Album->find('all', array(
-			'order' => array('Album.sort_order DESC'),
-			'offset' => $paginator['offset'],
-			'limit' => $paginator['per_page'],
-		));
+	
+		$this->Paginator->settings = array(
+		
+			'limit' => 12,
+		);
+		$data = $this->Paginator->paginate('Album');	
 		$this->set(compact('data', 'title_for_layout','paginator'));
 	}
 	
@@ -258,16 +236,17 @@ class AlbumsController extends AppController{
 		if(!$data){
 			throw new NotFoundException('Такой страницы нет...');
 		}
-
-		$other_album = $this->Album->find('all', array(
-			'conditions' => array(array('Album.id !=' => $id)),
-			'limit' => 6,
-		));
+		$this->Paginator->settings = array(
+			'conditions' => array('Gallery.album_id' => $id),
+			'limit' => 12,
+		);
+		$galleries = $this->Paginator->paginate('Gallery');	
+		//debug($galleries);die;
 		$title_for_layout = $data['Album']['title'];
 		$meta['keywords'] = $data['Album']['keywords'];
 		$meta['description'] = $data['Album']['description'];
 
-		$this->set(compact('data', 'title_for_layout', 'other_album', 'meta'));
+		$this->set(compact('data', 'title_for_layout', 'galleries', 'meta'));
 	}
 
 	
