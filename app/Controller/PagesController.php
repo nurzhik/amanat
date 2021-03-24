@@ -3,7 +3,7 @@ App::uses('CakeEmail', 'Network/Email');
 
 class PagesController extends AppController {
 
-	public $uses = array('Page','News','Symptom','Setting','Review','Advantage');
+	public $uses = array('Page','News','Symptom','Setting','Review','Advantage','Branche');
 	public function admin_welcome(){
 		
 	}
@@ -67,7 +67,20 @@ class PagesController extends AppController {
 		$page = $this->Setting->find('first');
 		$reviews =$this->Review->find('all');
 		$advantages = $this->Advantage->find('all', array(
-			'conditions' => array('Advantage.type_id ' => 1),
+			'conditions' => array('Advantage.type_id ' => 2),
+			
+		));
+	
+		$title_for_layout ='Главная';
+		$this->set(compact('title_for_layout' ,'symptoms_query','advantages','page','reviews'));
+	}
+	public function appartament(){
+		$this->Advantage->locale = Configure::read('Config.language');
+		$this->Setting->locale = Configure::read('Config.language');
+		$page = $this->Setting->find('first');
+		$reviews =$this->Review->find('all');
+		$advantages = $this->Advantage->find('all', array(
+			'conditions' => array('Advantage.type_id ' => 2),
 			
 		));
 	
@@ -110,23 +123,21 @@ class PagesController extends AppController {
 		$title_for_layout ='Регистраиця';
 		$this->set(compact('title_for_layout' ,'page','infographics','videos','npas','branches','partners','reports','information','plan','vacancy'));
 	}
-	public function chat(){
-			
-		
-		
-		$title_for_layout ='Чат';
-		$this->set(compact('title_for_layout' ,'page','infographics','videos','npas','branches','partners','reports','information','plan','vacancy'));
-	}
+	
 	public function contacts(){
 		
 		$title_for_layout = 'Контакты';
-		$slides = $this->Slide->find('all');
-		$partners = $this->Partner->find('all');
+		$branches = $this->Branche->find('all');
+		foreach ($branches as $key => $item) {
+			$branches[$key]['Branche']['managers'] = json_decode($item['Branche']['managers'],true );;
+			# code...
+		}
 		
-		$data = $this->Setting->findById(1);
+		//debug($branches);die;
+		
 		// $meta['keywords'] = $page['Page']['keywords'];
 		// $meta['description'] = $page['Page']['description'];
-		$this->set(compact('title_for_layout', 'meta','slides','new','featured','partners','data'));
+		$this->set(compact('title_for_layout', 'meta','slides','new','featured','partners','branches'));
 	}
 	
 	

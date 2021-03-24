@@ -6,9 +6,12 @@
 	Router::connect('/admin/peoples/edit/*', array('controller' => 'users', 'action' => 'peoples_edit','admin' => true));
 	Router::connect('/feedback', array('controller' => 'feedbacks', 'action' => 'index'));
 	Router::connect('/page/*', array('controller' => 'pages', 'action' => 'index'));
+
 	Router::connect('/news', array('controller' => 'news', 'action' => 'index'));
 	Router::connect('/news/view/*', array('controller' => 'news', 'action' => 'view'));
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+	Router::connect('/auto', array('controller' => 'pages', 'action' => 'auto'));
+	Router::connect('/appartament', array('controller' => 'pages', 'action' => 'appartament'));
 	Router::connect('/contacts', array('controller' => 'pages', 'action' => 'contacts'));
 	Router::connect('/registration_page', array('controller' => 'pages', 'action' => 'registration_page'));
 	Router::connect('/partners', array('controller' => 'pages', 'action' => 'partners'));
@@ -22,6 +25,7 @@
 		array('controller' => 'users', 'action' => 'registration'),
 		array('language' => '[a-z]{2}')
 	);
+
 	Router::connect('/:language/users/login', 
 		array('controller' => 'users', 'action' => 'login'),
 		array('language' => '[a-z]{2}')
@@ -78,6 +82,18 @@
 	);
 	Router::connect('/:language', 
 		array('controller' => 'pages', 'action' => 'home'),
+		array('language' => '[a-z]{2}')
+	);
+	Router::connect('/:language/auto', 
+		array('controller' => 'pages', 'action' => 'auto'),
+		array('language' => '[a-z]{2}')
+	);
+	Router::connect('/:language/appartament', 
+		array('controller' => 'pages', 'action' => 'appartament'),
+		array('language' => '[a-z]{2}')
+	);
+	Router::connect('/:language/contacts', 
+		array('controller' => 'pages', 'action' => 'contacts'),
 		array('language' => '[a-z]{2}')
 	);
 	Router::connect('/:language/chat', 

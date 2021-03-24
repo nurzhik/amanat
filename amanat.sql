@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 23 2021 г., 15:17
+-- Время создания: Мар 24 2021 г., 14:27
 -- Версия сервера: 5.7.23
 -- Версия PHP: 5.6.38
 
@@ -43,9 +43,7 @@ CREATE TABLE `advantages` (
 --
 
 INSERT INTO `advantages` (`id`, `title`, `img`, `body`, `type_id`, `created`, `modified`) VALUES
-(1, '  1 шаг ', '1fcfab4d05a5be2328df1f4c31bc767f.png', 'Заполнить форму', 3, '2021-02-05 11:20:43', '2021-02-05 11:22:30'),
-(2, ' Высококвалифицированные врачи', '3d897aef116b7e08a341b69d03c3c79a.png', 'Обеспечение нашим клиентам оказания высокоспециализированной медицинской помощи за счет профессионализма врачей', 2, '2021-02-05 11:34:59', '2021-02-05 11:35:23'),
-(3, 'Опишите проблему', '2bf503fcaedf0b9e143975c7f897fcb3.png', 'Расскажите что вас беспокоит, опишите свои симптомы\r\n', 1, '2021-02-05 11:41:27', '2021-02-05 11:41:27');
+(4, 'ЭКОНОМИЯ СРЕДСТВ', '0a06f0dbbe8f9b45db126171f0b6c16a.png', 'Разнообразный и богатый опыт начало повседневной работы по', 1, '2021-03-24 13:22:57', '2021-03-24 13:22:57');
 
 -- --------------------------------------------------------
 
@@ -67,7 +65,8 @@ CREATE TABLE `albums` (
 --
 
 INSERT INTO `albums` (`id`, `title`, `img`, `date`, `created`, `modified`) VALUES
-(1, 'Альбом amanat drive 1', '12ddd77a23a8ef878bc71f3b89723f26.png', '2021-03-18', '2021-03-10 15:15:17', '2021-03-11 09:41:32');
+(1, 'Альбом amanat drive 1КЗ', '12ddd77a23a8ef878bc71f3b89723f26.png', '2021-03-18', '2021-03-10 15:15:17', '2021-03-24 09:03:53'),
+(2, 'Альбом amanat drive 2', 'a4c520b2e6b49cbea23a6813ce10701c.png', '2021-03-18', '2021-03-24 08:47:22', '2021-03-24 08:47:22');
 
 -- --------------------------------------------------------
 
@@ -243,9 +242,10 @@ CREATE TABLE `galleries` (
 --
 
 INSERT INTO `galleries` (`id`, `album_id`, `img`, `video`) VALUES
-(1, 1, '5dcaeee872e2e5e96418103f4d3b8a40.png', '#1212'),
+(1, 1, '5dcaeee872e2e5e96418103f4d3b8a40.png', 'https://www.youtube.com/watch?v=IljZH7VEWbY'),
 (2, 1, '7bc2b0bba3295de0cb8a10ee8c59110d.png', ''),
-(3, 1, '', '#');
+(3, 1, '', '#'),
+(4, 2, 'ed31f7264d0b3b16b5e6ce867f6ab88f.png', '#');
 
 -- --------------------------------------------------------
 
@@ -267,197 +267,30 @@ CREATE TABLE `i18n` (
 --
 
 INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
-(1, 'ru', 'News', 1, 'title', 'Начата работа по прокладке труб в столице'),
-(2, 'ru', 'News', 1, 'body', '<p>Начата работа по прокладке труб в столице</p>\r\n'),
-(3, 'ru', 'News', 1, 'keywords', 'asdasd'),
-(4, 'ru', 'News', 1, 'description', 'asdasd'),
-(5, 'ru', 'Recomendation', 1, 'title', '2017 Рекомендации ESC ПО ОИМ СПST англ язык'),
-(6, 'ru', 'Leadership', 1, 'title', 'Нуралинов Омирбек Муздарович'),
-(7, 'ru', 'Leadership', 1, 'category', 'Кардиолог высшей категории'),
-(8, 'ru', 'Leadership', 2, 'title', 'Нуралинов Омирбек Муздарович'),
-(9, 'ru', 'Leadership', 2, 'category', 'Кардиолог высшей категории'),
-(10, 'ru', 'Leadership', 3, 'title', 'Нуралинов Омирбек Муздарович'),
-(11, 'ru', 'Leadership', 3, 'category', 'Кардиолог высшей категории'),
-(12, 'ru', 'Leadership', 4, 'title', 'Нуралинов Омирбек Муздарович2'),
-(13, 'ru', 'Leadership', 4, 'category', 'Кардиолог высшей категории'),
-(14, 'ru', 'Leadership', 5, 'title', 'Нуралинов Омирбек Муздарович5'),
-(15, 'ru', 'Leadership', 5, 'category', 'Кардиолог высшей категории4'),
-(16, 'ru', 'Comp', 1, 'body', '+7 (7172) 70-31-03'),
-(17, 'ru', 'Comp', 2, 'body', 'Главная'),
-(18, 'ru', 'Comp', 3, 'body', 'Главная'),
-(19, 'ru', 'Comp', 4, 'body', 'Главная'),
-(20, 'ru', 'Event', 1, 'title', 'V МЕЖДУНАРОДНАЯ ШКОЛА ПО КЛИНИЧЕСКОЙ ЭЛЕКТРОФИЗИОЛОГИИ И ИНТЕРВЕНЦИОННОЙ АРИТМОЛОГИИ'),
-(21, 'ru', 'Event', 1, 'body', '<p>asdasd</p>\r\n'),
-(22, 'ru', 'Event', 1, 'keywords', 'asd'),
-(23, 'ru', 'Event', 1, 'info_events', 'asdasd'),
-(24, 'ru', 'Event', 1, 'thesis_title', 'asdasd'),
-(25, 'ru', 'Event', 1, 'thesis_body', '<p>dasdasd</p>\r\n'),
-(26, 'ru', 'Event', 2, 'title', 'V МЕЖДУНАРОДНАЯ ШКОЛА ПО КЛИНИЧЕСКОЙ ЭЛЕКТРОФИЗИОЛОГИИ И ИНТЕРВЕНЦИОННОЙ АРИТМОЛОГИИ'),
-(27, 'ru', 'Event', 2, 'body', '<p>asdasd</p>\r\n'),
-(28, 'ru', 'Event', 2, 'keywords', 'asd'),
-(29, 'ru', 'Event', 2, 'info_events', 'asdasd'),
-(30, 'ru', 'Event', 2, 'thesis_title', 'asdasd'),
-(31, 'ru', 'Event', 2, 'thesis_body', '<p>dasdasd</p>\r\n'),
-(32, 'ru', 'Event', 3, 'title', 'V МЕЖДУНАРОДНАЯ ШКОЛА ПО КЛИНИЧЕСКОЙ ЭЛЕКТРОФИЗИОЛОГИИ И ИНТЕРВЕНЦИОННОЙ АРИТМОЛОГИИ'),
-(33, 'ru', 'Event', 3, 'body', '<p>asdasd</p>\r\n'),
-(34, 'ru', 'Event', 3, 'keywords', ''),
-(35, 'ru', 'Event', 3, 'info_events', 'asd'),
-(36, 'ru', 'Event', 3, 'thesis_title', 'dasd'),
-(37, 'ru', 'Event', 3, 'thesis_body', '<p>asdasdasd</p>\r\n'),
-(38, 'ru', 'Event', 4, 'title', 'V МЕЖДУНАРОДНАЯ ШКОЛА ПО КЛИНИЧЕСКОЙ ЭЛЕКТРОФИЗИОЛОГИИ И ИНТЕРВЕНЦИОННОЙ АРИТМОЛОГИИ'),
-(39, 'ru', 'Event', 4, 'body', '<p>asdasd</p>\r\n'),
-(40, 'ru', 'Event', 4, 'keywords', ''),
-(41, 'ru', 'Event', 4, 'info_events', 'asd'),
-(42, 'ru', 'Event', 4, 'thesis_title', 'dasd'),
-(43, 'ru', 'Event', 4, 'thesis_body', '<p>asdasdasd</p>\r\n'),
-(44, 'ru', 'Event', 5, 'title', 'asd'),
-(45, 'ru', 'Event', 5, 'body', '<p>asdasdasdasd</p>\r\n'),
-(46, 'ru', 'Event', 5, 'keywords', ''),
-(47, 'ru', 'Event', 5, 'info_events', 'asdasdasd'),
-(48, 'ru', 'Event', 5, 'thesis_title', 'asd'),
-(49, 'ru', 'Event', 5, 'thesis_body', '<p>asdasdasd</p>\r\n'),
-(50, 'ru', 'Gallery', 1, 'title', ''),
-(54, 'ru', 'Gallery', 5, 'title', ''),
-(55, 'ru', 'History', 1, 'title', ''),
-(56, 'ru', 'History', 2, 'title', ''),
-(62, 'ru', 'News', 2, 'title', 'Тестовый'),
-(63, 'ru', 'News', 2, 'body', '<p>Тестовый</p>\r\n'),
-(64, 'ru', 'News', 2, 'keywords', ''),
-(65, 'ru', 'News', 2, 'description', ''),
-(68, 'ru', 'History', 8, 'body', '<p>asdasd</p>\r\n'),
-(69, 'ru', 'History', 9, 'body', '<p>sdasd</p>\r\n'),
-(70, 'ru', 'Slide', 3, 'title', 'EHRA in Kazakhstan Course'),
-(71, 'ru', 'Slide', 3, 'descripti', '<p>asdasd</p>\r\n'),
-(72, 'ru', 'Slide', 3, 'slide_info', 'Nur-Sultan, Kazakhstan / 11-12 September, 2020'),
-(73, 'ru', 'Slide', 4, 'title', 'EHRA in Kazakhstan Course'),
-(74, 'ru', 'Slide', 4, 'descripti', '<p>asdasd</p>\r\n'),
-(75, 'ru', 'Slide', 4, 'slide_info', 'Nur-Sultan, Kazakhstan / 11-12 September, 2020'),
-(76, 'ru', 'Slide', 5, 'title', 'EHRA in Kazakhstan Course'),
-(77, 'ru', 'Slide', 5, 'descripti', '<p>ddddddd</p>\r\n'),
-(78, 'ru', 'Slide', 5, 'slide_info', 'Nur-Sultan, Kazakhstan / 11-12 September, 2020'),
-(79, 'ru', 'Comp', 5, 'body', '<div class=\"main_img_name\">Абдрахманов Аян Сулейменович</div>\r\n						<div class=\"main_img_position\">Доктор медицинских наук</div>\r\n					'),
-(80, 'ru', 'Partner', 1, 'title', ''),
-(81, 'ru', 'Partner', 1, 'body', ''),
-(82, 'ru', 'Partner', 1, 'keywords', ''),
-(83, 'ru', 'Partner', 1, 'description', ''),
-(84, 'ru', 'Partner', 2, 'title', ''),
-(85, 'ru', 'Partner', 2, 'body', ''),
-(86, 'ru', 'Partner', 2, 'keywords', ''),
-(87, 'ru', 'Partner', 2, 'description', ''),
-(88, 'ru', 'Comp', 6, 'body', '<div class=\"main_text__heading\">Добро пожаловать на официальный сайт </div>\r\n                <h4>Республиканского Общественного Объеденения \"Казахстанского общества аритмологов\"</h4>\r\n                <div class=\"text_block\">\r\n                    <p>С 2014 года в нашей стране активно работает РОО \"Казахстанское общество аритмологов\", основной целью которого является снижение заболеваемости и риска осложнений у больных с нарушениями сердечного ритма и повышение качества их жизни и трудоспособности.</p>\r\n                    <p>&nbsp;</p>\r\n                    <p>Глубокоуважаемые коллеги!</p>\r\n                    <p>За это время под эгидой нашего Общества было проведено множество конференций, мастер классов объединивших более 500 врачей, интересующихся проблемами лечения аритмии. Темы наших конференции самые разнообразные:</p>\r\n                    <ul>\r\n                        <li>Основы клинической электрокардиофизиологии </li>\r\n                        <li>Электрокардиостимуляция в лечении брадиаритмий </li>\r\n                        <li>Катетерные методы лечения тахиаритмий </li>\r\n                        <li>Имплантируемые кардиовертеры-дефибрилляторы </li>\r\n                        <li>Хирургические методы лечения аритмий сердца,  экстракция электродов, генетические аспекты и консервативная терапия, протезирование или пластика митрального клапана и РЧ изоляция легочных вен на открытом сердце и многие другие актуальные вопросы современной кардиологии и  аритмологии.</li>\r\n                    </ul>\r\n                    <p>Надеемся, что наше сотрудничество  будет успешным  и плодотворным!</p>\r\n                </div>'),
-(89, 'ru', 'Comp', 7, 'body', '<iframe style=\"pointer-events: none;\" src=\"https://yandex.ru/map-widget/v1/?um=constructor%3A7c7b21b646047c249b7ff28c78420ab663fd5cbba1ca5688d5abf2076d37e575&amp;source=constructor\" width=\"500\" height=\"400\" frameborder=\"0\"></iframe>'),
-(90, 'ru', 'Comp', 8, 'body', 'г. Нур-Султан, Туран 38'),
-(91, 'ru', 'Comp', 9, 'body', 'info@aritmology.kz'),
-(92, 'ru', 'Event', 6, 'title', 'Тест'),
-(93, 'ru', 'Event', 6, 'body', '<p>Тест</p>\r\n'),
-(94, 'ru', 'Event', 6, 'keywords', ''),
-(95, 'ru', 'Event', 6, 'info_events', 'Тест'),
-(96, 'ru', 'Event', 6, 'thesis_title', 'asd'),
-(97, 'ru', 'Event', 6, 'thesis_body', '<p>ывфыв</p>\r\n'),
-(98, 'ru', 'Event', 7, 'title', 'Тест'),
-(99, 'ru', 'Event', 7, 'body', '<p>Тест</p>\r\n'),
-(100, 'ru', 'Event', 7, 'keywords', ''),
-(101, 'ru', 'Event', 7, 'info_events', 'Тест'),
-(102, 'ru', 'Event', 7, 'thesis_title', 'asd'),
-(103, 'ru', 'Event', 7, 'thesis_body', '<p>ывфыв</p>\r\n'),
-(104, 'ru', 'Event', 8, 'title', 'test'),
-(105, 'ru', 'Event', 8, 'body', '<p>test</p>\r\n'),
-(106, 'ru', 'Event', 8, 'keywords', 'test'),
-(107, 'ru', 'Event', 8, 'info_events', 'test'),
-(108, 'ru', 'Event', 8, 'thesis_title', 'test'),
-(109, 'ru', 'Event', 8, 'thesis_body', '<p>test</p>\r\n'),
-(110, 'ru', 'Event', 9, 'title', 'test'),
-(111, 'ru', 'Event', 9, 'body', '<p>test</p>\r\n'),
-(112, 'ru', 'Event', 9, 'keywords', 'test'),
-(113, 'ru', 'Event', 9, 'info_events', 'test'),
-(114, 'ru', 'Event', 9, 'thesis_title', 'test'),
-(115, 'ru', 'Event', 9, 'thesis_body', '<p>test</p>\r\n'),
-(116, 'ru', 'Event', 10, 'title', 'dasd'),
-(117, 'ru', 'Event', 10, 'body', '<p>dasd</p>\r\n'),
-(118, 'ru', 'Event', 10, 'keywords', ''),
-(119, 'ru', 'Event', 10, 'info_events', 'dddd'),
-(120, 'ru', 'Event', 10, 'thesis_title', 'ddd'),
-(121, 'ru', 'Event', 10, 'thesis_body', '<p>ddd</p>\r\n'),
-(122, 'ru', 'Event', 11, 'title', 'dasd'),
-(123, 'ru', 'Event', 11, 'body', '<p>dasd</p>\r\n'),
-(124, 'ru', 'Event', 11, 'keywords', ''),
-(125, 'ru', 'Event', 11, 'info_events', 'dddd'),
-(126, 'ru', 'Event', 11, 'thesis_title', 'ddd'),
-(127, 'ru', 'Event', 11, 'thesis_body', '<p>ddd</p>\r\n'),
-(128, 'ru', 'Event', 12, 'title', 'dasd'),
-(129, 'ru', 'Event', 12, 'body', '<p>dasd</p>\r\n'),
-(130, 'ru', 'Event', 12, 'keywords', ''),
-(131, 'ru', 'Event', 12, 'info_events', 'dasd'),
-(132, 'ru', 'Event', 12, 'thesis_title', 'dasd'),
-(133, 'ru', 'Event', 12, 'thesis_body', '<p>dasd</p>\r\n'),
-(134, 'ru', 'Event', 13, 'title', 'dasd'),
-(135, 'ru', 'Event', 13, 'body', '<p>dasd</p>\r\n'),
-(136, 'ru', 'Event', 13, 'keywords', ''),
-(137, 'ru', 'Event', 13, 'info_events', 'dasd'),
-(138, 'ru', 'Event', 13, 'thesis_title', 'dasd'),
-(139, 'ru', 'Event', 13, 'thesis_body', '<p>dasd</p>\r\n'),
-(140, 'ru', 'Event', 14, 'title', 'Тестовая 5'),
-(141, 'ru', 'Event', 14, 'body', '<p>Тестовая 5</p>\r\n'),
-(142, 'ru', 'Event', 14, 'keywords', ''),
-(143, 'ru', 'Event', 14, 'info_events', 'Тестовая 5'),
-(144, 'ru', 'Event', 14, 'thesis_title', 'Тестовая 5'),
-(145, 'ru', 'Event', 14, 'thesis_body', '<p>Тестовая 5</p>\r\n'),
-(146, 'ru', 'Event', 15, 'title', 'Тестовая 5'),
-(147, 'ru', 'Event', 15, 'body', '<p>Тестовая 5</p>\r\n'),
-(148, 'ru', 'Event', 15, 'keywords', ''),
-(149, 'ru', 'Event', 15, 'info_events', 'Тестовая 5'),
-(150, 'ru', 'Event', 15, 'thesis_title', 'Тестовая 5'),
-(151, 'ru', 'Event', 15, 'thesis_body', '<p>Тестовая 5</p>\r\n'),
-(152, 'ru', 'News', 3, 'title', 'ВСТРЕЧА РОО «КАЗАХСКОЕ ОБЩЕСТВО АРИТМОЛОГОВ» С ПРЕЗИДЕНТОМ EHRA'),
-(153, 'ru', 'News', 3, 'body', '<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">11 мая 2016 года на базе АО &laquo;Национальный научный кардиохирургический центр&raquo; при поддержке компаний &laquo;Biotronik&raquo; и &laquo;Med Co&raquo; прошла совместная встреча Республиканского общественного объединения &laquo;Казахское общество аритмологов&raquo; с президентом Европейской ассоциации сердечного ритма (EHRA) Герхардом Хиндриксом.</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">Во встрече приняли участие вице-министр МЗС РК Биртанов Е.А., президент EHRA Герхард Хиндрикс, председатель правления АО &laquo;ННКЦ&raquo; Пя Ю.В., заведующий отделением интервенционной аритмологии, Президент Казахского общества аритмологов Абдрахманов А.С., заведующий отделом аритмологии НИИКиВБ (г.Алматы) Реквава Р.Р. В ходе встречи были обсуждены вопросы эффективной профилактики внезапной сердечной смертности, повышения уровня аритмологической службы в регионах и поддержки профессионального сообщества. Было достигнуто соглашение о вступлении РОО &laquo;Казахское общество аритмологов&raquo; в Европейскую ассоциацию сердечного ритма (EHRA).</p>\r\n'),
-(154, 'ru', 'News', 3, 'keywords', ''),
-(155, 'ru', 'News', 3, 'description', ''),
-(156, 'ru', 'News', 4, 'title', 'ВСТРЕЧА РОО «КАЗАХСКОЕ ОБЩЕСТВО АРИТМОЛОГОВ» С ПРЕЗИДЕНТОМ EHRA'),
-(157, 'ru', 'News', 4, 'body', '<p>&nbsp;</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">11 мая 2016 года на базе АО &laquo;Национальный научный кардиохирургический центр&raquo; при поддержке компаний &laquo;Biotronik&raquo; и &laquo;Med Co&raquo; прошла совместная встреча Республиканского общественного объединения &laquo;Казахское общество аритмологов&raquo; с президентом Европейской ассоциации сердечного ритма (EHRA) Герхардом Хиндриксом.</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">Во встрече приняли участие вице-министр МЗС РК Биртанов Е.А., президент EHRA Герхард Хиндрикс, председатель правления АО &laquo;ННКЦ&raquo; Пя Ю.В., заведующий отделением интервенционной аритмологии, Президент Казахского общества аритмологов Абдрахманов А.С., заведующий отделом аритмологии НИИКиВБ (г.Алматы) Реквава Р.Р. В ходе встречи были обсуждены вопросы эффективной профилактики внезапной сердечной смертности, повышения уровня аритмологической службы в регионах и поддержки профессионального сообщества. Было достигнуто соглашение о вступлении РОО &laquo;Казахское общество аритмологов&raquo; в Европейскую ассоциацию сердечного ритма (EHRA).</p>\r\n\r\n<p>&nbsp;</p>\r\n'),
-(158, 'ru', 'News', 4, 'keywords', ''),
-(159, 'ru', 'News', 4, 'description', ''),
-(160, 'ru', 'News', 5, 'title', 'ВСТРЕЧА РОО «КАЗАХСКОЕ ОБЩЕСТВО АРИТМОЛОГОВ» С ПРЕЗИДЕНТОМ EHRA'),
-(161, 'ru', 'News', 5, 'body', '<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">11 мая 2016 года на базе АО &laquo;Национальный научный кардиохирургический центр&raquo; при поддержке компаний &laquo;Biotronik&raquo; и &laquo;Med Co&raquo; прошла совместная встреча Республиканского общественного объединения &laquo;Казахское общество аритмологов&raquo; с президентом Европейской ассоциации сердечного ритма (EHRA) Герхардом Хиндриксом.</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">Во встрече приняли участие вице-министр МЗС РК Биртанов Е.А., президент EHRA Герхард Хиндрикс, председатель правления АО &laquo;ННКЦ&raquo; Пя Ю.В., заведующий отделением интервенционной аритмологии, Президент Казахского общества аритмологов Абдрахманов А.С., заведующий отделом аритмологии НИИКиВБ (г.Алматы) Реквава Р.Р. В ходе встречи были обсуждены вопросы эффективной профилактики внезапной сердечной смертности, повышения уровня аритмологической службы в регионах и поддержки профессионального сообщества. Было достигнуто соглашение о вступлении РОО &laquo;Казахское общество аритмологов&raquo; в Европейскую ассоциацию сердечного ритма (EHRA).</p>\r\n'),
-(162, 'ru', 'News', 5, 'keywords', ''),
-(163, 'ru', 'News', 5, 'description', ''),
-(164, 'ru', 'News', 6, 'title', 'ВСТРЕЧА РОО «КАЗАХСКОЕ ОБЩЕСТВО АРИТМОЛОГОВ» С ПРЕЗИДЕНТОМ EHRA'),
-(165, 'ru', 'News', 6, 'body', '<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">11 мая 2016 года на базе АО &laquo;Национальный научный кардиохирургический центр&raquo; при поддержке компаний &laquo;Biotronik&raquo; и &laquo;Med Co&raquo; прошла совместная встреча Республиканского общественного объединения &laquo;Казахское общество аритмологов&raquo; с президентом Европейской ассоциации сердечного ритма (EHRA) Герхардом Хиндриксом.</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">Во встрече приняли участие вице-министр МЗС РК Биртанов Е.А., президент EHRA Герхард Хиндрикс, председатель правления АО &laquo;ННКЦ&raquo; Пя Ю.В., заведующий отделением интервенционной аритмологии, Президент Казахского общества аритмологов Абдрахманов А.С., заведующий отделом аритмологии НИИКиВБ (г.Алматы) Реквава Р.Р. В ходе встречи были обсуждены вопросы эффективной профилактики внезапной сердечной смертности, повышения уровня аритмологической службы в регионах и поддержки профессионального сообщества. Было достигнуто соглашение о вступлении РОО &laquo;Казахское общество аритмологов&raquo; в Европейскую ассоциацию сердечного ритма (EHRA).</p>\r\n'),
-(166, 'ru', 'News', 6, 'keywords', ''),
-(167, 'ru', 'News', 6, 'description', ''),
-(168, 'ru', 'News', 7, 'title', 'ВСТРЕЧА РОО «КАЗАХСКОЕ ОБЩЕСТВО АРИТМОЛОГОВ» С ПРЕЗИДЕНТОМ EHRA'),
-(169, 'ru', 'News', 7, 'body', '<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">11 мая 2016 года на базе АО &laquo;Национальный научный кардиохирургический центр&raquo; при поддержке компаний &laquo;Biotronik&raquo; и &laquo;Med Co&raquo; прошла совместная встреча Республиканского общественного объединения &laquo;Казахское общество аритмологов&raquo; с президентом Европейской ассоциации сердечного ритма (EHRA) Герхардом Хиндриксом.</p>\r\n\r\n<p style=\"box-sizing: border-box; margin: 0px; font-family: TTCommons, Arial, Helvetica, sans-serif; font-size: 18px;\">Во встрече приняли участие вице-министр МЗС РК Биртанов Е.А., президент EHRA Герхард Хиндрикс, председатель правления АО &laquo;ННКЦ&raquo; Пя Ю.В., заведующий отделением интервенционной аритмологии, Президент Казахского общества аритмологов Абдрахманов А.С., заведующий отделом аритмологии НИИКиВБ (г.Алматы) Реквава Р.Р. В ходе встречи были обсуждены вопросы эффективной профилактики внезапной сердечной смертности, повышения уровня аритмологической службы в регионах и поддержки профессионального сообщества. Было достигнуто соглашение о вступлении РОО &laquo;Казахское общество аритмологов&raquo; в Европейскую ассоциацию сердечного ритма (EHRA).</p>\r\n'),
-(170, 'ru', 'News', 7, 'keywords', ''),
-(171, 'ru', 'News', 7, 'description', ''),
-(172, 'ru', 'Slide', 6, 'title', 'EHRA in Kazakhstan Course 2'),
-(173, 'ru', 'Slide', 6, 'descripti', 'Cardiac arrhythmia management and cardiac electrophysiology for cardiologists\r\n'),
-(174, 'ru', 'Slide', 6, 'slide_info', 'Nur-Sultan, Kazakhstan / 11-12 September, 2020'),
-(175, 'ru', 'Slide', 7, 'title', 'asdas'),
-(176, 'ru', 'Slide', 7, 'descripti', '<p>sdasdasdasd</p>\r\n'),
-(177, 'ru', 'Slide', 7, 'slide_info', 'dasda'),
-(178, 'ru', 'Slide', 8, 'title', 'EHRA in Kazakhstan Course'),
-(179, 'ru', 'Slide', 8, 'descripti', 'Cardiac arrhythmia management and cardiac electrophysiology for cardiologists\r\n'),
-(180, 'ru', 'Slide', 8, 'slide_info', 'Nur-Sultan, Kazakhstan / 11-12 September, 2020'),
-(181, 'ru', 'News', 1, 'short_desc', ''),
-(182, 'ru', 'News', 2, 'short_desc', ''),
-(183, 'ru', 'Faq', 1, 'title', 'Тестовый 222'),
-(184, 'ru', 'Faq', 1, 'body', 'Тестовый Тестовый'),
-(185, 'kz', 'Faq', 1, 'title', ' Кз \"әі'),
-(186, 'kz', 'Faq', 1, 'body', '\"әі'),
-(187, 'ru', 'Review', 1, 'title', ' Улина Марина Евгеньевна'),
-(188, 'ru', 'Review', 1, 'body', 'Товарищи! рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании новых предложений. Повседневная практика показывает, что сложившаяся структура организации позволяет выполнять важные задания.'),
-(189, 'ru', 'Review', 1, 'position', ' Врач терапевт'),
-(193, 'ru', 'Comp', 13, 'body', 'Onter — сервис онлайн-консультаций с врачами. Сейчас мы рассматриваем новые клиники для подключения к нашей сети и, если вы управляете клиникой, готовой работать с телемедицинскими консультациями, заполните, пожалуйста, анкету - мы свяжемся с вами, если будем заинтересованы в сотрудничестве.\r\n\r\n \r\n\r\nЕсли вы - практикующий специалист вне клиники, то заполните, пожалуйста, анкету для участия в проекте. Свяжемся с вами, если нас заинтересует ваша кандидатура.'),
-(194, 'ru', 'Comp', 14, 'body', '44Wjhelb-5I'),
-(195, 'ru', 'Setting', 1, 'partner_title', '    О сервисе'),
-(196, 'ru', 'Setting', 1, 'partner_text', '<p>Onter &mdash; сервис онлайн-консультаций с врачами. Сейчас мы рассматриваем новые клиники для подключения к нашей сети и, если вы управляете клиникой, готовой работать с телемедицинскими консультациями, заполните, пожалуйста, анкету - мы свяжемся с вами, если будем заинтересованы в сотрудничестве.</p>\r\n\r\n<p>Если вы - практикующий специалист вне клиники, то заполните, пожалуйста, анкету для участия в проекте. Свяжемся с вами, если нас заинтересует ваша кандидатура.</p>\r\n'),
-(197, 'ru', 'Setting', 1, 'about_text', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non, neque turpis amet amet tristique lacus in sit. Sociis ridiculus molestie nulla amet laoreet in. Sed nibh tortor proin porttitor sagittis sit ut. Vestibulum, et morbi nibh nisl dolor neque scelerisque feugiat. Metus, lectus placerat mattis in curabitur donec euismod a fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non, neque turpis amet amet tristique lacus in sit. Sociis ridiculus molestie nulla amet laoreet in</p>\r\n'),
-(198, 'ru', 'Advantage', 1, 'title', '  1 шаг '),
-(199, 'ru', 'Advantage', 1, 'body', 'Заполнить форму'),
-(200, 'ru', 'Advantage', 2, 'title', ' Высококвалифицированные врачи'),
-(201, 'ru', 'Advantage', 2, 'body', 'Обеспечение нашим клиентам оказания высокоспециализированной медицинской помощи за счет профессионализма врачей'),
-(202, 'ru', 'Advantage', 3, 'title', 'Опишите проблему'),
-(203, 'ru', 'Advantage', 3, 'body', 'Расскажите что вас беспокоит, опишите свои симптомы\r\n'),
-(204, 'ru', 'Album', 1, 'title', 'Альбом amanat drive 1');
+(204, 'ru', 'Album', 1, 'title', 'Альбом amanat drive 13'),
+(205, 'ru', 'Album', 2, 'title', 'Альбом amanat drive 2'),
+(206, 'kz', 'Album', 1, 'title', 'Альбом amanat drive 1КЗ'),
+(207, 'ru', 'Setting', 1, 'old_car_entrance', ' '),
+(208, 'ru', 'Setting', 1, 'old_car_initial', ''),
+(209, 'ru', 'Setting', 1, 'old_car_time', ' '),
+(210, 'ru', 'Setting', 1, 'old_car_membership', ' '),
+(211, 'ru', 'Setting', 1, 'new_car_entrance', ' '),
+(212, 'ru', 'Setting', 1, 'new_car_initial', ''),
+(213, 'ru', 'Setting', 1, 'new_car_time', ' '),
+(214, 'ru', 'Setting', 1, 'new_car_membership', ' '),
+(215, 'ru', 'Setting', 1, 'home_entrance', ' '),
+(216, 'ru', 'Setting', 1, 'home_initial', ''),
+(217, 'ru', 'Setting', 1, 'home_time', ' '),
+(218, 'ru', 'Setting', 1, 'home_membership', ' '),
+(219, 'ru', 'Setting', 1, 'main_title', ' <span>Авто</span> либо <span>квартира</span> в рассрочку на 5 лет'),
+(220, 'ru', 'Setting', 1, 'main_desc', 'Как принято считать, представители современных социальных резервов, вне зависимости от их уровня, должны быть в рамках своих собственных рациональных ограничений.'),
+(221, 'ru', 'Setting', 1, 'auto_title', ' '),
+(222, 'ru', 'Setting', 1, 'auto_desc', ''),
+(223, 'ru', 'Setting', 1, 'home_title', ' '),
+(225, 'ru', 'Setting', 1, 'home_desc', ''),
+(226, 'ru', 'Setting', 1, 'home_text', ' '),
+(227, 'ru', 'Advantage', 4, 'title', 'ЭКОНОМИЯ СРЕДСТВ'),
+(228, 'ru', 'Advantage', 4, 'body', 'Разнообразный и богатый опыт начало повседневной работы по');
 
 -- --------------------------------------------------------
 
@@ -476,6 +309,7 @@ CREATE TABLE `news` (
   `img` varchar(255) DEFAULT NULL,
   `keywords` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `view` int(11) NOT NULL DEFAULT '0',
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -484,9 +318,9 @@ CREATE TABLE `news` (
 -- Дамп данных таблицы `news`
 --
 
-INSERT INTO `news` (`id`, `category_id`, `title`, `alias`, `body`, `short_text`, `date`, `img`, `keywords`, `description`, `created`, `modified`) VALUES
-(1, 9, 'Начата работа по прокладке труб в столице', 'nachata_rabota_po_prokladke_trub_v_stolitse', '<p>Начата работа по прокладке труб в столице</p>\r\n', '123', '2021-02-24', NULL, NULL, NULL, '2021-02-01', '2021-02-01'),
-(2, 1, 'Тестовый', 'testovyyi', '<p>Тестовый</p>\r\n', '<p>Тестовый</p>\r\n', NULL, 'f07aa84da7372f5a68387ab99f82ff6e.jpg', NULL, NULL, '2021-02-01', '2021-02-01');
+INSERT INTO `news` (`id`, `category_id`, `title`, `alias`, `body`, `short_text`, `date`, `img`, `keywords`, `description`, `view`, `created`, `modified`) VALUES
+(1, 9, 'Начата работа по прокладке труб в столице', 'nachata_rabota_po_prokladke_trub_v_stolitse', '<p>Начата работа по прокладке труб в столице</p>\r\n', '123', '2021-02-24', NULL, NULL, NULL, 4, '2021-02-01', '2021-02-01'),
+(2, 1, 'Тестовый', 'testovyyi', '<p>Тестовый</p>\r\n', '<p>Тестовый</p>\r\n', NULL, 'f07aa84da7372f5a68387ab99f82ff6e.jpg', NULL, NULL, 2, '2021-02-01', '2021-02-01');
 
 -- --------------------------------------------------------
 
@@ -622,6 +456,7 @@ CREATE TABLE `results` (
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `link` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -630,8 +465,8 @@ CREATE TABLE `reviews` (
 -- Дамп данных таблицы `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `link`, `created`, `modified`) VALUES
-(1, '#', '2021-02-01 14:45:20', '2021-03-11 11:25:06');
+INSERT INTO `reviews` (`id`, `link`, `img`, `created`, `modified`) VALUES
+(1, ' #', 'f88f85dff39a6ffe868d8b40ac1d43e0.png', '2021-02-01 14:45:20', '2021-03-24 13:25:53');
 
 -- --------------------------------------------------------
 
@@ -641,21 +476,39 @@ INSERT INTO `reviews` (`id`, `link`, `created`, `modified`) VALUES
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
-  `partner_title` varchar(255) DEFAULT NULL,
-  `partner_text` text,
-  `partner_video` varchar(255) DEFAULT NULL,
-  `about_text` text,
-  `about_video` varchar(255) DEFAULT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime NOT NULL
+  `modified` datetime NOT NULL,
+  `old_car_entrance` varchar(11) DEFAULT NULL,
+  `old_car_initial` text,
+  `old_car_time` varchar(255) DEFAULT NULL,
+  `old_car_membership` varchar(255) DEFAULT NULL,
+  `new_car_entrance` varchar(255) DEFAULT NULL,
+  `new_car_initial` text,
+  `new_car_time` varchar(255) DEFAULT NULL,
+  `new_car_membership` varchar(255) DEFAULT NULL,
+  `home_entrance` varchar(255) DEFAULT NULL,
+  `home_initial` text,
+  `home_time` varchar(255) DEFAULT NULL,
+  `home_membership` varchar(255) DEFAULT NULL,
+  `home_text` text,
+  `phone` varchar(255) DEFAULT NULL,
+  `insta` varchar(255) DEFAULT NULL,
+  `face` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
+  `main_title` varchar(255) DEFAULT NULL,
+  `main_desc` varchar(255) DEFAULT NULL,
+  `auto_title` varchar(255) DEFAULT NULL,
+  `auto_desc` varchar(255) DEFAULT NULL,
+  `home_title` varchar(255) DEFAULT NULL,
+  `home_desc` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `settings`
 --
 
-INSERT INTO `settings` (`id`, `partner_title`, `partner_text`, `partner_video`, `about_text`, `about_video`, `created`, `modified`) VALUES
-(1, '    О сервисе', '<p>Onter &mdash; сервис онлайн-консультаций с врачами. Сейчас мы рассматриваем новые клиники для подключения к нашей сети и, если вы управляете клиникой, готовой работать с телемедицинскими консультациями, заполните, пожалуйста, анкету - мы свяжемся с вами, если будем заинтересованы в сотрудничестве.</p>\r\n\r\n<p>Если вы - практикующий специалист вне клиники, то заполните, пожалуйста, анкету для участия в проекте. Свяжемся с вами, если нас заинтересует ваша кандидатура.</p>\r\n', ' 44Wjhelb-5I', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non, neque turpis amet amet tristique lacus in sit. Sociis ridiculus molestie nulla amet laoreet in. Sed nibh tortor proin porttitor sagittis sit ut. Vestibulum, et morbi nibh nisl dolor neque scelerisque feugiat. Metus, lectus placerat mattis in curabitur donec euismod a fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non, neque turpis amet amet tristique lacus in sit. Sociis ridiculus molestie nulla amet laoreet in</p>\r\n', '44Wjhelb-5I', '2021-02-05 09:27:22', '2021-02-05 11:35:48');
+INSERT INTO `settings` (`id`, `created`, `modified`, `old_car_entrance`, `old_car_initial`, `old_car_time`, `old_car_membership`, `new_car_entrance`, `new_car_initial`, `new_car_time`, `new_car_membership`, `home_entrance`, `home_initial`, `home_time`, `home_membership`, `home_text`, `phone`, `insta`, `face`, `youtube`, `main_title`, `main_desc`, `auto_title`, `auto_desc`, `home_title`, `home_desc`) VALUES
+(1, '2021-02-05 09:27:22', '2021-03-24 13:13:07', ' ', '', ' ', ' ', ' ', '', ' ', ' ', ' ', '', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' <span>Авто</span> либо <span>квартира</span> в рассрочку на 5 лет', 'Как принято считать, представители современных социальных резервов, вне зависимости от их уровня, должны быть в рамках своих собственных рациональных ограничений.', ' ', '', ' ', '');
 
 -- --------------------------------------------------------
 
@@ -689,7 +542,7 @@ INSERT INTO `users` (`id`, `role`, `username`, `active`, `password`, `forgetpwd`
 (41, 'user', 'test@mail.ru', 'deactivate', '$2a$10$KJ8wApy3D0YbVd4Vs58SyOdwkqHsFXCHA99VGVnFF5g1envi1ZNOq', '819247', NULL, 'ТЕстовый', '+7 (333) 333 33 33', 123, NULL, NULL, '2021-03-09 14:19:18', '2021-03-09 14:19:18'),
 (42, 'moderator', 'moderator@mail.ru', 'deactivate', '$2a$10$0ipkXRO7/isvM1Ad2lA2ougd1ipm4vT0KSbxf8OOf0SG6rmvDu8YK', NULL, NULL, 'МОдератор 1', NULL, NULL, NULL, NULL, '2021-03-18 13:09:17', '2021-03-18 13:09:17'),
 (43, 'moderator', 'moderator2@mail.ru', 'deactivate', '$2a$10$7iS2WyOoqUKriUNypD8pZub5PEh8TY173f/o.wnG6a5PtnmyvJ1rq', NULL, NULL, 'МОдератор 2', NULL, NULL, NULL, NULL, '2021-03-18 13:10:00', '2021-03-18 13:10:00'),
-(44, 'user', 'client2@mail.ru', 'deactivate', '$2a$10$ICaam2NX8m3yfs7urrf1zuddp9mZDr14/xHvEwFLWoFQx/y8QB3A6', '889285', NULL, 'Клиент2 ', '+7 (777) 777 77 77', 940309350448, NULL, NULL, '2021-03-19 14:09:33', '2021-03-19 14:09:33');
+(44, 'user', 'client2@mail.ru', 'activate', '$2a$10$ICaam2NX8m3yfs7urrf1zuddp9mZDr14/xHvEwFLWoFQx/y8QB3A6', '889285', NULL, 'Клиент2 ', '+7 (777) 777 77 77', 940309350448, NULL, NULL, '2021-03-19 14:09:33', '2021-03-19 14:09:33');
 
 --
 -- Индексы сохранённых таблиц
@@ -827,13 +680,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `advantages`
 --
 ALTER TABLE `advantages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `branches`
@@ -875,13 +728,13 @@ ALTER TABLE `faqs`
 -- AUTO_INCREMENT для таблицы `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `i18n`
 --
 ALTER TABLE `i18n`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT для таблицы `news`

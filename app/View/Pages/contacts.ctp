@@ -1,32 +1,55 @@
-<section class="page page_heading">
-			<img class="page_heading_img" src="/img/page_heading.jpg" alt=""></img>
-			<div class="container">
-				<div class="title">Контакты</div>
-				<ul class="breadcrumbs">
-					<li><a href="/">Главная</a></li>
-					<li><a>Контакты</a></li>
-				</ul>
-			</div>
-		</section>
-
-		<section class="page_section">
-			<div class="container">
-				<div class="page_block">
-					<div class="page_content">
-						<div class="title small_title">Контакты</div>
-						<div class="contact_block">
-							<div class="contact_name">Центр Судебной Экспертизы</div>
-							<ul class="contact_list">
-								<li>Казахстан, Z00X8P8, г. Нур-Султан, Ғабиден Мұстафин 7,​ 9-й м-н, Алматы район</li>
-								<li>Тел.: <a href="tel:+77172291075">+7 (7172) 29‒10‒75,</a> <a href="tel:+77172291078">+7 (7172) 29‒10‒78</a></li>
-								<li>Общие вопросы: <a href="mailto:info@cse.kz">info@cse.kz</a></li>
-							</ul>
-						</div>
-						<div class="contact_map">
-							<iframe style="pointer-events: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3A7c7b21b646047c249b7ff28c78420ab663fd5cbba1ca5688d5abf2076d37e575&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
-						</div>
-					</div>
-					<?=$this->element('sidebar');?>
-				</div>
-			</div>
-		</section>
+<div class="page">
+<section class="contacts">
+    <div class="container">
+        <div class="contacts_wrap">
+            <h1>Контакты</h1>
+            <div class="pers_wrap">
+            <a href="javascript:;" class="personal_payment_btn">Выберите ваш город из списка</a>
+            <div class="personal_under" style="display: none;">
+                <a href="javascript:;" class="personal_city">Астана</a>
+                <a href="javascript:;" class="personal_city">Астана</a>
+                <a href="javascript:;" class="personal_city">Астана</a>
+            </div>
+            </div>
+        </div>
+        <div class="contacts_wrapper">
+        	<?php foreach ($branches as $item): ?>
+        		<div class="contacts_copy">
+	                <div class="contacts_list">
+	                    <div class="contacts_slick">г. <?=$item['City']['title_ru']?></div>
+	                </div>
+	                <div class="contacts_blog">
+	                    <div class="info_though">
+	                        <div class="info_subtitle">адрес офиса</div>
+	                        <div class="info_undertitle"><?=$item['Branche']['address_'.$l]?></div>
+	                    </div>
+	                    <div class="info_though">
+	                        <div class="info_subtitle">представители</div>
+	                        <?php foreach ($item['Branche']['managers'] as $manager): ?>
+	                        	<div class="contacts_item">
+		                            <div class="info_undertitle"><?=$manager['name']?></div>
+		                            <a href="tel:<?=$manager['phone']?>" class="contacts_tel"><?=$manager['phone']?></a>
+		                            <a href="mailto:<?=$manager['email']?>" class="contacts_tel mail"><?=$manager['email']?></a>
+		                        </div>
+	                        <?php endforeach ?>
+	                    </div>
+	                    <div class="info_though">
+	                        <div class="info_subtitle">мы на карте</div>
+	                        <a data-src="#popup-map" data-fancybox  href="javascript:;" class="con_btn" data-map="<?=$item['Branche']['map_code']?>">Открыть адрес на карте</a>
+	                    </div>
+	                </div>
+	            </div>
+        	<?php endforeach ?>
+            
+            
+        </div>
+        <a href="javascript:;" class="main_btn">показать весь список</a>
+    </div>
+</section>
+ <?=$this->element('partners') ?>
+</div>
+<div class="popup-spisok">
+    <div id="popup-map" style="display:none">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aefa06dd0b8806bb7473da6141bf6c5a9be82d54666e191431c7ad56d5116f6e2&amp;source=constructor" width="791" height="556" frameborder="0"></iframe>
+    </div>
+</div>
