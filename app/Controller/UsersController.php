@@ -559,7 +559,7 @@ class UsersController extends AppController{
 			'conditions' => array('Car.user_id' => $id)));
 		
 	
-		//debug($cars);die;
+		
 		
 	
 		//Заполняем данные в форме

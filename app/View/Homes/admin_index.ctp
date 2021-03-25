@@ -33,11 +33,11 @@
                     <th style="width: 1%">
                         ID
                     </th>
-                    <th style="width: 30%">
+                    <th style="width: 20%">
                         ФИО
                     </th>
-                    <th style="width: 30%">
-                        Машина
+                    <th style="width: 20%">
+                        Недвижимость
                     </th>
                     <th style="width: 8%" class="text-center">
                         Статус
@@ -76,7 +76,11 @@
       							</i>
       							Редактировать
       						</a>
-                  
+                   <a class="btn btn-success btn-sm" href="/admin/homes/change/<?=$item['Home']['id']?>">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Изменить квартиру
+                  </a>
                   
       		
       						<?php echo $this->Form->postLink('Удалить', array('action' => 'admin_delete', $item['Home']['id']), array('confirm' => 'Подтвердите удаление','value'=>'465','class' => 'btn btn-danger btn-sm')); ?>

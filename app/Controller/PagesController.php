@@ -3,7 +3,7 @@ App::uses('CakeEmail', 'Network/Email');
 
 class PagesController extends AppController {
 
-	public $uses = array('Page','News','Symptom','Setting','Review','Advantage','Branche');
+	public $uses = array('Page','News','Symptom','Setting','Review','Advantage','Branche','RequestCar','User','Car','RequestHome','Home');
 	public function admin_welcome(){
 		
 	}
@@ -15,7 +15,94 @@ class PagesController extends AppController {
 		$title_for_layout = 'Pages';
 		$this->set(compact('data', 'title_for_layout'));
 	}
+	public function admin_requestcars(){
+		
+		$data = $this->RequestCar->find('all');
+		//debug($data);die;
+		$title_for_layout = 'Pages';
+		$this->set(compact('data', 'title_for_layout'));
+	}
+	public function admin_requesthomes(){
+		
+		$data = $this->RequestHome->find('all');
+		//debug($data);die;
+		$title_for_layout = 'Pages';
+		$this->set(compact('data', 'title_for_layout'));
+	}
+	public function change_car(){
+		$this->autoRender = false;
 
+		if($this->request->is(array('post', 'put'))){
+
+			$id = $this->request->data['ChangeHome']['car_id'];
+			$this->Car->id = $id;
+			$data = $this->Car->find('first',array(
+				'conditions' => array('Car.id' =>$id),
+			));
+			
+
+			$q = "INSERT INTO change_cars (user_id,date,entrance,initial,remainder,year,price,title,status,created) VALUES ('".$data['Car']['user_id']."' ,  '".$data['Car']['date']."',  '".$data['Car']['entrance']."',  '".$data['Car']['initial']."',  '".$data['Car']['remainder']."',  '".$data['Car']['year']."',  '".$data['Car']['price']."',  '".$data['Car']['title']."',  '".$data['Car']['status']."',CURRENT_TIMESTAMP)";
+			$this->Car->query($q);
+
+
+			$data1 = $this->request->data['ChangeHome'];
+			
+			if($this->Car->save($data1)){
+				$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', array(), 'bad');
+			}
+			
+			
+		}
+	}
+	public function change_home(){
+		$this->autoRender = false;
+
+		if($this->request->is(array('post', 'put'))){
+
+			$id = $this->request->data['ChangeHome']['home_id'];
+			
+			$data = $this->Home->find('first',array(
+				'conditions' => array('Home.id' =>$id),
+			));
+			$this->Home->id = $id;
+
+			$q = "INSERT INTO change_homes (user_id,date,entrance,initial,remainder,developer,price,title,status,created) VALUES ('".$data['Home']['user_id']."' ,  '".$data['Home']['date']."',  '".$data['Home']['entrance']."',  '".$data['Home']['initial']."',  '".$data['Home']['remainder']."',  '".$data['Home']['developer']."',  '".$data['Home']['price']."',  '".$data['Home']['title']."',  '".$data['Home']['status']."',CURRENT_TIMESTAMP)";
+			$this->Home->query($q);
+
+
+			$data1 = $this->request->data['ChangeHome'];
+			
+			if($this->Home->save($data1)){
+				$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', array(), 'bad');
+			}
+			
+			
+		}
+	}
+	public function admin_requestcars_edit($id){
+		$users = $this->User->find('all',array(
+			'conditions' => array('User.role' =>'user'),
+		));
+		$data = $this->RequestCar->findById($id);
+		//debug($data);
+		$title_for_layout = 'Pages';
+		$this->set(compact('data', 'title_for_layout','users'));
+	}
+	public function admin_requesthomes_edit($id){
+		$users = $this->User->find('all',array(
+			'conditions' => array('User.role' =>'user'),
+		));
+		$data = $this->RequestHome->findById($id);
+		//debug($data);
+		$title_for_layout = 'Pages';
+		$this->set(compact('data', 'title_for_layout','users'));
+	}
 	public function index($page_alias = null){
 		$this->Page->locale = Configure::read('Config.language');
 		$this->Faq->locale = Configure::read('Config.language');
@@ -118,8 +205,6 @@ class PagesController extends AppController {
 	}
 	public function registration_page(){
 			
-		
-		
 		$title_for_layout ='Регистраиця';
 		$this->set(compact('title_for_layout' ,'page','infographics','videos','npas','branches','partners','reports','information','plan','vacancy'));
 	}

@@ -70,7 +70,67 @@ class HomesController extends AppController{
 			$this->set(compact('id', 'data','users'));
 		}
 	}
+	public function admin_change($id){
+		
+		if(is_null($id) || !(int)$id || !$this->Home->exists($id)){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$data = $this->Home->findById($id);
+	
+		if($this->request->is(array('post', 'put'))){
+			$this->Home->id = $id;
+			$q = "INSERT INTO change_homes (user_id,date,entrance,initial,remainder,developer,price,title,status,created) VALUES ('".$data['Home']['user_id']."' ,  '".$data['Home']['date']."',  '".$data['Home']['entrance']."',  '".$data['Home']['initial']."',  '".$data['Home']['remainder']."',  '".$data['Home']['developer']."',  '".$data['Home']['price']."',  '".$data['Home']['title']."',  '".$data['Home']['status']."',CURRENT_TIMESTAMP)";
+			$this->Home->query($q);
+			$data1 = $this->request->data['Home'];
+			
+			if($this->Home->save($data1)){
+				$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', array(), 'bad');
+			}
+		}
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$users = $this->User->find('all',array(
+				'conditions' => array('User.role' =>'user'),
+			));
+			$this->set(compact('id', 'data','users'));
+		}
+	}
+	public function admin_extradition() {
+			$this->autoRender = false;
 
+			if($this->request->is(array('post', 'put'))){
+				$id = $this->request->data['Extradition']['home_id'];
+
+				$home = $this->Home->find('first',array(
+					'conditions' => array('Home.id' =>$id),
+				));
+				$q = "INSERT INTO extradition_homes (user_id,date,entrance,initial,remainder,developer,price,title,status,created) VALUES ('".$home['Home']['user_id']."' ,  '".$home['Home']['date']."',  '".$home['Home']['entrance']."',  '".$home['Home']['initial']."',  '".$home['Home']['remainder']."',  '".$home['Home']['developer']."',  '".$home['Home']['price']."',  '".$home['Home']['title']."',  '".$home['Home']['status']."',CURRENT_TIMESTAMP)";
+				//$this->Home->query($q);
+				
+				
+			
+				$this->Home->query($q);
+
+					$this->Home->delete($id);
+					$homes =  $this->Home->find('all',array(
+						'recursive' => -1,
+					));
+					$i= 1;
+					foreach ($homes as $item) {
+						$id = $item['Home']['id'];
+						$update = $this->Home->query("UPDATE homes SET order_num='{$i}' WHERE id='{$id}'");
+						$i++;
+						# code...
+					}
+					$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+					return $this->redirect('/admin/homes');
+				
+			}
+	}
 	public function admin_delete($id){
 		if (!$this->Home->exists($id)) {
 			throw new NotFounddException('Такой статьи нет');
@@ -154,5 +214,18 @@ class HomesController extends AppController{
 		$this->set(compact('data', 'title_for_layout', 'other_home', 'meta'));
 	}
 
-	
+	public function request() {
+		$this->autoRender = false;
+
+		if($this->request->is(array('post', 'put'))){
+			$data = $this->request->data['HomeRequest'];
+			//debug($data);die;
+			$q = "INSERT INTO request_homes (fio,phone,iin,home_id,home,price,created) VALUES ('".$data['fio']."' ,  '".$data['phone']."',  '".$data['iin']."',  '".$data['home_id']."', '".$data['home']."', '".$data['price']."',CURRENT_TIMESTAMP)";
+			$this->Home->query($q);
+		
+			$this->Session->setFlash('Заявка успешно отправлено', 'default', array(), 'good');
+			return $this->redirect($this->referer());
+			
+		}
+	}
 }

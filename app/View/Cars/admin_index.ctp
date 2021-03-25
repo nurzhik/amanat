@@ -46,9 +46,6 @@
                 </tr>
             </thead>
             <tbody>
-
-      			
-      			
       			 	<?php foreach($data as $item): ?>
       					<tr>
       						<td>
@@ -76,7 +73,11 @@
       							</i>
       							Редактировать
       						</a>
-                  
+                  <a class="btn btn-success btn-sm" href="/admin/cars/change/<?=$item['Car']['id']?>">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Изменить машину
+                  </a>
                   
       		
       						<?php echo $this->Form->postLink('Удалить', array('action' => 'admin_delete', $item['Car']['id']), array('confirm' => 'Подтвердите удаление','value'=>'465','class' => 'btn btn-danger btn-sm')); ?>

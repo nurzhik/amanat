@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+
+  $('#btn_change').on('click',function(){
+     $('#change_id').val($(this).attr("data-id"));
+  });
     $('.main_sliderrr').slick({
       autoplay: false,
       arrows: true,

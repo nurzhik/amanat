@@ -72,6 +72,66 @@ class CarsController extends AppController{
 			$this->set(compact('id', 'data','users'));
 		}
 	}
+	public function admin_change($id){
+		
+		if(is_null($id) || !(int)$id || !$this->Car->exists($id)){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$data = $this->Car->findById($id);
+	
+		if($this->request->is(array('post', 'put'))){
+			$this->Car->id = $id;
+			$q = "INSERT INTO change_cars (user_id,date,entrance,initial,remainder,year,price,title,status,created) VALUES ('".$data['Car']['user_id']."' ,  '".$data['Car']['date']."',  '".$data['Car']['entrance']."',  '".$data['Car']['initial']."',  '".$data['Car']['remainder']."',  '".$data['Car']['year']."',  '".$data['Car']['price']."',  '".$data['Car']['title']."',  '".$data['Car']['status']."',CURRENT_TIMESTAMP)";
+			$this->Car->query($q);
+			$data1 = $this->request->data['Car'];
+			
+			if($this->Car->save($data1)){
+				$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+				return $this->redirect($this->referer());
+			}else{
+				$this->Session->setFlash('Ошибка', 'default', array(), 'bad');
+			}
+		}
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$users = $this->User->find('all',array(
+				'conditions' => array('User.role' =>'user'),
+			));
+			$this->set(compact('id', 'data','users'));
+		}
+	}
+	public function admin_extradition() {
+			$this->autoRender = false;
+
+			if($this->request->is(array('post', 'put'))){
+				$id = $this->request->data['Extradition']['car_id'];
+				$car = $this->Car->find('first',array(
+					'conditions' => array('Car.id' =>$id),
+				));
+				$q = "INSERT INTO extradition_cars (user_id,date,entrance,initial,remainder,year,price,title,status,created) VALUES ('".$car['Car']['user_id']."' ,  '".$car['Car']['date']."',  '".$car['Car']['entrance']."',  '".$car['Car']['initial']."',  '".$car['Car']['remainder']."',  '".$car['Car']['year']."',  '".$car['Car']['price']."',  '".$car['Car']['title']."',  '".$car['Car']['status']."',CURRENT_TIMESTAMP)";
+				//$this->Car->query($q);
+				
+				
+			
+				$this->Car->query($q);
+
+					$this->Car->delete($id);
+					$cars =  $this->Car->find('all',array(
+						'recursive' => -1,
+					));
+					$i= 1;
+					foreach ($cars as $item) {
+						$id = $item['Car']['id'];
+						$update = $this->Car->query("UPDATE cars SET order_num='{$i}' WHERE id='{$id}'");
+						$i++;
+						# code...
+					}
+					$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+					return $this->redirect('/admin/cars');
+				
+			}
+	}
 
 	public function admin_delete($id){
 		if (!$this->Car->exists($id)) {
@@ -156,5 +216,18 @@ class CarsController extends AppController{
 		$this->set(compact('data', 'title_for_layout', 'other_car', 'meta'));
 	}
 
-	
+	public function request() {
+		$this->autoRender = false;
+
+		if($this->request->is(array('post', 'put'))){
+			$data = $this->request->data['CarRequest'];
+			//debug($data);die;
+			$q = "INSERT INTO request_cars (fio,phone,iin,car_id,car,price,created) VALUES ('".$data['fio']."' ,  '".$data['phone']."',  '".$data['iin']."',  '".$data['car_id']."', '".$data['car']."', '".$data['price']."',CURRENT_TIMESTAMP)";
+		
+			$this->Car->query($q);
+			$this->Session->setFlash('Заявка успешно отправлено', 'default', array(), 'good');
+			return $this->redirect($this->referer());
+			
+		}
+	}
 }
