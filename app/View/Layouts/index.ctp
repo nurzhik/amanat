@@ -68,10 +68,8 @@
                             <a href="javascript:;">Наши программы<div class="menu_arrow"></div></a>
                             <div class="sub_menu">
                                 <div class="sub_menu_list">
-                                    <a href="/<?=$lang?>appartament" class="sub_link">Квартира</a>
+                                    <a href="/<?=$lang?>appartament" class="sub_link">Недвижимость</a>
                                     <a href="/<?=$lang?>auto" class="sub_link">Машина</a>
-                                    <a href="apartment.html" class="sub_link">Недвижимость</a>
-                                    <a href="auto.html" class="sub_link">Машина</a>
                                 </div>
                             </div>
                         </li>
