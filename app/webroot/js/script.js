@@ -172,6 +172,17 @@ function createTabs(){
     });
 }
 
+createCabTabs ();
+function createCabTabs(){  
+    $('.ctab-ul li a').on('click', function(e)  {
+        var currentAttrValue = $(this).attr('href');
+        $('.table_auto ' + currentAttrValue).fadeIn(150).show().siblings().hide();
+        $('.ctab-ul li a').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+}
+
 $('.mob_menu').on("click", function(){
   if($(this).hasClass('active')){
     $(this).removeClass('active');

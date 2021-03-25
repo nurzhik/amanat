@@ -2266,6 +2266,80 @@ section.news_inner {
 .personal_unit{
     width: 100%;
 }
+.personal-top{
+    background-color:#fff;
+    padding:25px;
+    display:flex;    
+    border-bottom:1px solid #ccc;
+}
+.personal-top__link{
+    margin-right: 25px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 12px 20px 12px 48px;
+    border: 1px solid #ccc;
+    color: #333;
+    position: relative;
+}
+.personal-top__link:hover{
+    background-color:#f3f3f3;
+}
+.personal-top__link:before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom:0;
+    left: 15px;
+    width: 22px;    
+    background-position:center;
+    background-size: contain;
+    background-repeat:no-repeat;
+}
+.personal-top__link--nedvizhimost:before{
+    background-image: url(../img/pers_apartment.svg);
+}
+.personal-top__link--car:before{
+    background-image: url(../img/per3.svg);
+}
+.personal-top__link--active{
+    border: 1px solid rgb(153 153 153 / 29%);
+    background-color:#f3f3f3;
+}
+.ctab-ul{
+    display:flex;
+    margin-bottom:20px;
+}
+.ctab-ul li{
+    margin-right:15px;
+}
+.ctab-ul li a{
+    position: relative;
+    color:#333;
+    font-weight:500;
+    font-size:16px;
+    display:block;
+    padding-bottom:8px;
+}
+.ctab-ul li a.active:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:50px;
+    height:2px;
+    background-color:#E92D45;
+}
+.cab-tab__part__item{
+    display:none;
+}
+.cab-tab__part__item.active{
+    display:block;
+}
+.personal_pad{
+    background-color:#fff;
+    padding:25px;
+}
 .personal_mind_text{
     font-weight: 600;
     font-size: 18px;

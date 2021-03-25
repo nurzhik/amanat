@@ -69,7 +69,7 @@
                             <div class="sub_menu">
                                 <div class="sub_menu_list">
                                     <a href="/<?=$lang?>appartament" class="sub_link">Недвижимость</a>
-                                    <a href="/<?=$lang?>auto" class="sub_link">Машина</a>
+                                    <a href="/<?=$lang?>auto" class="sub_link">Транспорт</a>
                                 </div>
                             </div>
                         </li>
