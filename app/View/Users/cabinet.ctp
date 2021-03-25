@@ -16,26 +16,27 @@
                         <?php endif ?>
                     </div>
                     <div class="profile_blog">
-                    <div class="profile_unit">
-                        <div class="table_title">ФИО:</div>
-                        <div class="table_subtitle"><?=$data['User']['fio']; ?> </div>
-                    </div>
-                    <div class="profile_unit">
-                        <div class="table_title">Почта:</div>
-                        <a  href="mailto:smirnov@mail.ru;" class="table_subtitle"><?=$data['User']['username']; ?></a>
-                    </div>
-                    <div class="profile_unit">
-                        <div class="table_title">ИИН:</div>
-                        <div class="table_subtitle"><?=$data['User']['iin']; ?></div>
-                    </div>
-                    <div class="profile_unit">
-                        <div class="table_title">Город:</div>
-                        <div class="table_subtitle"><?=$data['User']['city']; ?></div>
-                    </div>
-                    <div class="profile_unit">
-                        <div class="table_title">Адрес:</div>
-                        <div class="table_subtitle"><?=$data['User']['address']; ?></div>
-                    </div>
+                        <div class="profile_unit">
+                            <div class="table_title">ФИО:</div>
+                            <div class="table_subtitle"><?=$data['User']['fio']; ?> </div>
+                        </div>
+                        <div class="profile_unit">
+                            <div class="table_title">Почта:</div>
+                            <a  href="mailto:smirnov@mail.ru;" class="table_subtitle"><?=$data['User']['username']; ?></a>
+                        </div>
+                        <div class="profile_unit">
+                            <div class="table_title">ИИН:</div>
+                            <div class="table_subtitle"><?=$data['User']['iin']; ?></div>
+                        </div>
+                        <div class="profile_unit">
+                            <div class="table_title">Город:</div>
+                            <div class="table_subtitle"><?=$data['User']['city']; ?></div>
+                        </div>
+                        <div class="profile_unit">
+                            <div class="table_title">Адрес:</div>
+                            <div class="table_subtitle"><?=$data['User']['address']; ?></div>
+                        </div>
+                        <a class="btn" href="#">Редактировать</a>
                     </div>
                 </div>
             </div>
