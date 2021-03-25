@@ -80,126 +80,146 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
           <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-              <!-- Add icons to the links using the .nav-icon class
-                   with font-awesome or any other icon font library -->
-              <li class="nav-item">
-                <a href="/admin/settings" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                   Главная страница
-                  </p>
-                </a>
-              </li>  
-            
-         
-              <li class="nav-item">
-                <a href="/admin/peoples" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Пайщики
-                  </p>
-                </a>
-              </li>
-             <li class="nav-item">
-                <a href="/admin/cars" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Машины
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/advantages" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Преимущество
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/news" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Новости 
-                  </p>
-                </a>
-              </li>
-            	<li class="nav-item">
-                <a href="/admin/partners" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Партнеры
-                  </p>
-                </a>
-              </li>
-            
-              <li class="nav-item">
-                <a href="/admin/albums" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Галерея
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-	            <a href="#" class="nav-link active">
-	              <i class="nav-icon fas fa-tree"></i>
-	              <p>
-	               Контакты
-	                <i class="fas fa-angle-left right"></i>
-	              </p>
-	            </a>
-	            <ul class="nav nav-treeview" style="display: none;">
-	              <li class="nav-item">
-	                <a href="/admin/cities" class="nav-link">
-	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>Города</p>
-	                </a>
-	              </li>
-	              <li class="nav-item">
-	                <a href="/admin/branches" class="nav-link">
-	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>Филиалы</p>
-	                </a>
-	              </li>
-	             
-	            </ul>
-	          </li>
-	          <li class="nav-item">
-                <a href="/admin/questionnaires" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Опросники
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/faqs" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Вопросы и ответы
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/reviews" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Отзывы
-                  </p>
-                </a>
-              </li>
-             
-             
-              <li class="nav-item">
-                  <a href="/users/logout" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                       Выход
-                    </p>
-                  </a>
-                </li>
-            </ul>
+			    <li class="nav-item">
+			        <a href="/admin/settings" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Главная страница
+			            </p>
+			        </a>
+			    </li>
+
+			    <li class="nav-item">
+			        <a href="/admin/peoples" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Пайщики
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/requestcars" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Заявки на замену машины
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/requesthomes" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Заявки на замену недвижимости
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/cars" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Машины
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/homes" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Недвижимость
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/advantages" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Преимущество
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/news" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Новости
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/partners" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Партнеры
+			            </p>
+			        </a>
+			    </li>
+
+			    <li class="nav-item">
+			        <a href="/admin/albums" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Галерея
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="#" class="nav-link active">
+			            <i class="nav-icon fas fa-tree"></i>
+			            <p>
+			                Контакты
+			                <i class="fas fa-angle-left right"></i>
+			            </p>
+			        </a>
+			        <ul class="nav nav-treeview" style="display: none;">
+			            <li class="nav-item">
+			                <a href="/admin/cities" class="nav-link">
+			                    <i class="far fa-circle nav-icon"></i>
+			                    <p>Города</p>
+			                </a>
+			            </li>
+			            <li class="nav-item">
+			                <a href="/admin/branches" class="nav-link">
+			                    <i class="far fa-circle nav-icon"></i>
+			                    <p>Филиалы</p>
+			                </a>
+			            </li>
+			        </ul>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/questionnaires" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Опросники
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/faqs" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Вопросы и ответы
+			            </p>
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a href="/admin/reviews" class="nav-link">
+			            <i class="nav-icon fas fa-copy"></i>
+			            <p>
+			                Отзывы
+			            </p>
+			        </a>
+			    </li>
+
+			    <li class="nav-item">
+			        <a href="/users/logout" class="nav-link">
+			            <i class="nav-icon fas fa-tachometer-alt"></i>
+			            <p>
+			                Выход
+			            </p>
+			        </a>
+			    </li>
+			</ul>
+
           </nav>
           <!-- /.sidebar-menu -->
         </div>

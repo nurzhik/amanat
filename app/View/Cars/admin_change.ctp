@@ -37,11 +37,7 @@ echo $this->Form->create('Car', array('type' => 'file'));
           </div>
           <div class="form-group">
             <label>Пользователи</label>
-            <select class="form-control select2" name="data[Car][user_id]" style="width: 100%;">
-              <?php foreach ($users as $item): ?>
-                <option value="<?=$item['User']['id']?>" <?=($item['User']['id']==$data['Car']['user_id'] ) ? 'selected' : '' ?>><?=$item['User']['fio']?></option>
-              <?php endforeach ?>
-            </select>
+             <input type="hidden" class="form-control" required="required" name="data[Car][user_id]"  value="<?=$data['Car']['user_id']?>">
           </div>
           <div class="form-group">
             <label for="inputName">Дата заключения договора</label>
@@ -78,53 +74,15 @@ echo $this->Form->create('Car', array('type' => 'file'));
     <div class="col-12">
      <!--  <a href="#" class="btn btn-secondary">Cancel</a> -->
      <?
-	   echo $this->Form->button('Редактировать', array('class' => 'btn btn-success float-right'));
+	   echo $this->Form->button('Изменить', array('class' => 'btn btn-success float-right'));
 	   ?>
      
     </div>
   </div>
-</form>
-  <div class="row">
-    <div class="col-12" style="margin-bottom: 40px;">
-     <a class="btn btn-success" type="submit" data-toggle="modal" data-target="#modal-primary">Выдать машину</a>
-    </div>
-  </div>
+
 </section>
 
 
-
-<div class="modal fade" id="modal-primary" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-primary">
-      <div class="modal-header">
-        <h4 class="modal-title">Выдача  авто</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-     
-      
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Закрыть</button>
-          <button type="submit" class="btn btn-outline-light" id="extradition_modal">Отправить</button>
-        </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<div style="display: none">
-  <form action="/admin/cars/extradition" method="POST">
-        <div style="display:none;">
-            <input type="hidden" name="_method" value="POST">
-          </div>
-     <div class="form-group">
-       <!--  <label for="inputName">Название машины</label> -->
-        <input type="hidden"  name="data[Extradition][car_id]" id="gallery_id" value="<?=$data['Car']['id']?>">
-      </div>
-      <button class="btn btn-success" type="submit" id="extradition" >Выдать машину</button>
-  </form>
-</div>
 <script type="text/javascript">
 	 CKEDITOR.replace( 'editor2' );
 </script>
