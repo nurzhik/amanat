@@ -2,7 +2,7 @@
 App::uses('CakeEmail', 'Network/Email');
 class UsersController extends AppController{
 
-	public $uses = array('User', 'Specialist','Register','Car','Questionnaire','Question','Responsible','Result');
+	public $uses = array('User', 'Specialist','Register','Car','Questionnaire','Question','Responsible','Result','Home');
 
 	public function beforeFilter(){
 		parent::beforeFilter();
@@ -462,6 +462,13 @@ class UsersController extends AppController{
 		}
 		$data = $this->User->findById($id);
 		$user_id = $id;
+		$cars = $this->Car->find('all', array(
+			'conditions' => array('Car.user_id' =>$id),
+		));
+		$homes = $this->Home->find('all', array(
+			'conditions' => array('Home.user_id' =>$id),
+		));
+		//debug($cars);die;
 		if(!$id){
 			throw new NotFoundException('Такой страницы нет...');
 		}
@@ -481,15 +488,9 @@ class UsersController extends AppController{
 			}
 		}
 
-		$this->set(compact('id', 'data', 'category_list','user_id', 'specialists', 'title_for_layout'));
+		$this->set(compact('id', 'data', 'category_list','user_id', 'specialists', 'title_for_layout','cars','homes'));
 
-		//Заполняем данные в форме
-		if(!$this->request->data){
-			$this->request->data = $data;
-			$title_for_layout = 'Редактирование';
-			//$category_list = $this->User->Category->find('list');
-			
-		}
+		
 	}
 	public function isActive() {
 
@@ -570,6 +571,32 @@ class UsersController extends AppController{
 
 
 	}
+	public function appartaments(){
+
+		if(!$this->Auth->user() ){
+			$lang = $this->Auth->locale = Configure::read('Config.language');
+			return $this->redirect('/'.$lang.'/users/login');
+		}
+		
+		$data = $this->Auth->user();
+		$id = $data['id'];
+		$user_id = $data['id'];
+		$homes = $this->Home->find('all', array(
+			'conditions' => array('Home.user_id' => $id)));
+		
+	
+		//debug($cars);die;
+		
+	
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$title_for_layout = 'Личный кабинет';
+			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'member_type','homes'));
+		}
+
+
+	}
 	public function my_turn(){
 
 		if(!$this->Auth->user() ){
@@ -620,6 +647,60 @@ class UsersController extends AppController{
 			$this->request->data = $data;
 			$title_for_layout = 'Личный кабинет';
 			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'member_type','cars','turns'));
+		}
+
+
+	}
+	public function my_turn_appartaments(){
+
+		if(!$this->Auth->user() ){
+			$lang = $this->Auth->locale = Configure::read('Config.language');
+			return $this->redirect('/'.$lang.'/users/login');
+		}
+		
+		$data = $this->Auth->user();
+		$user_id = $data['id'];
+		$homes = $this->Home->find('all', array(
+			'conditions' => array('Home.user_id' => $user_id )));
+		
+		foreach ($homes as $home) {
+			$id = $home['Home']['order_num'];
+			$prevTurn = "SELECT * FROM homes WHERE homes.order_num < $id   ORDER BY id DESC LIMIT 2";	
+			$nextTurn = "SELECT * FROM homes WHERE homes.order_num > $id   ORDER BY id ASC LIMIT 2";		
+			$selectPrev = $this->User->query($prevTurn);
+			$selectNext = $this->User->query($nextTurn);
+			asort($selectPrev);
+
+			foreach ($selectPrev as $item) {
+				$turns[$home['Home']['id']]['prev'][]=$item;
+			}
+			$turns[$home['Home']['id']]['middle'][]=$home;
+			foreach ($selectNext as $item) {
+				$turns[$home['Home']['id']]['next'][]=$item;
+			}
+			// = $item;
+			# code...
+		}
+		//debug($cars);
+		//debug($turns[1]);die;
+		//debug($turns);die;
+		// $id = $car['Car']['order_num'];
+		// $prevElement = $car['Car']['order_num'] - 3;
+		// $nextElement = $car['Car']['order_num'] + 3;
+		// debug($id);
+
+		// 
+		// $nextTurn = "SELECT * FROM cars WHERE cars.order_num > $id   ORDER BY id ASC LIMIT 2";			
+		// $selectPrev = $this->User->query($prevTurn);
+		// $selectNext = $this->User->query($nextTurn);
+		// debug($selectPrev);
+	
+		//debug($cars);die;
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$title_for_layout = 'Личный кабинет';
+			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'member_type','homes','turns'));
 		}
 
 

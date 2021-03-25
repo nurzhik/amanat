@@ -38,10 +38,20 @@
 		array('controller' => 'users', 'action' => 'cars'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/users/appartaments', 
+		array('controller' => 'users', 'action' => 'appartaments'),
+		array('language' => '[a-z]{2}')
+	);
 	Router::connect('/:language/users/my_turn', 
 		array('controller' => 'users', 'action' => 'my_turn'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/users/my_turn_appartaments', 
+		array('controller' => 'users', 'action' => 'my_turn_appartaments'),
+		array('language' => '[a-z]{2}')
+	);
+
+	
 	Router::connect('/:language/users/my_questionnaires', 
 		array('controller' => 'users', 'action' => 'my_questionnaires'),
 		array('language' => '[a-z]{2}')
