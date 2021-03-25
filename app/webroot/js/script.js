@@ -296,4 +296,4 @@ place();
 }); */
 
 
-console.log(total_count);
+// console.log(total_count);

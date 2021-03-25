@@ -27,7 +27,7 @@
     </div>
     <header> 
         <div class="container">
-            <a href="javascript:;" class="header_logo"><img src="/img/logo.svg" alt=""></a>
+            <a href="/" class="header_logo"><img src="/img/logo.svg" alt=""></a>
             <div class="header_right">
                 <div class="header_top">
                   <div class="header_quest">
@@ -63,13 +63,15 @@
                 </div>
                 <div class="header_bottom">
                     <ul class="header_ul">
-                        <li><a href="">Главная</a></li>
+                        <li><a href="/">Главная</a></li>
                         <li>
                             <a href="javascript:;">Наши программы<div class="menu_arrow"></div></a>
                             <div class="sub_menu">
                                 <div class="sub_menu_list">
                                     <a href="/<?=$lang?>appartament" class="sub_link">Квартира</a>
                                     <a href="/<?=$lang?>auto" class="sub_link">Машина</a>
+                                    <a href="apartment.html" class="sub_link">Недвижимость</a>
+                                    <a href="auto.html" class="sub_link">Машина</a>
                                 </div>
                             </div>
                         </li>
@@ -84,7 +86,6 @@
         </div>
     </header> 
 
-   
 
     <?php echo $this->fetch('content'); ?>
 
@@ -128,7 +129,7 @@
                 </div>
                 <button href="personal.html" class="popup-sbt" type="submit">Войти</button>
                 <a href="javascript:;" class="reestablish">Восстановить пароль</a>
-                <a href="javascript:;"  class="reestablish mt">Зарегистрироваться</a>
+                <a href="users/registration"  class="reestablish mt">Зарегистрироваться</a>
             </form>
         </div>
     </div>

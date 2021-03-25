@@ -116,7 +116,7 @@ header .container{
     line-height: 19px;
     color: #333333;
     outline-color: #E92D45;
-    background-color: rgba(249, 249, 249, 1);
+    background-color: #fff;
 }
 .search_btn {
     position: absolute;
@@ -131,7 +131,7 @@ header .container{
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(249, 249, 249, 1);
+    background-color: #fff;
 }
 .lang_block {
     position: relative;
@@ -1253,9 +1253,6 @@ section.often {
     font-size: 15px;
 }
 .partners_wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-top: 50px;
 }
 .partners{
