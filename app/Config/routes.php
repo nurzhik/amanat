@@ -2,6 +2,10 @@
 
 	Router::connect('/admin/users/:action', array('controller' => 'users','admin' => true));
 	Router::connect('/admin', array('controller' => 'pages', 'action' => 'welcome', 'admin' => true));
+	Router::connect('/admin/requestcars', array('controller' => 'pages', 'action' => 'requestcars', 'admin' => true));
+	Router::connect('/admin/requesthomes', array('controller' => 'pages', 'action' => 'requesthomes', 'admin' => true));
+	Router::connect('/admin/requestcars/edit/*', array('controller' => 'pages', 'action' => 'requestcars_edit','admin' => true));
+	Router::connect('/admin/requesthomes/edit/*', array('controller' => 'pages', 'action' => 'requesthomes_edit','admin' => true));
 	Router::connect('/admin/peoples', array('controller' => 'users', 'action' => 'peoples','admin' => true));
 	Router::connect('/admin/peoples/edit/*', array('controller' => 'users', 'action' => 'peoples_edit','admin' => true));
 	Router::connect('/feedback', array('controller' => 'feedbacks', 'action' => 'index'));
@@ -38,10 +42,20 @@
 		array('controller' => 'users', 'action' => 'cars'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/users/appartaments', 
+		array('controller' => 'users', 'action' => 'appartaments'),
+		array('language' => '[a-z]{2}')
+	);
 	Router::connect('/:language/users/my_turn', 
 		array('controller' => 'users', 'action' => 'my_turn'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/users/my_turn_appartaments', 
+		array('controller' => 'users', 'action' => 'my_turn_appartaments'),
+		array('language' => '[a-z]{2}')
+	);
+
+	
 	Router::connect('/:language/users/my_questionnaires', 
 		array('controller' => 'users', 'action' => 'my_questionnaires'),
 		array('language' => '[a-z]{2}')
