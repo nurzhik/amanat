@@ -27,7 +27,7 @@
     </div>
     <header> 
         <div class="container">
-            <a href="javascript:;" class="header_logo"><img src="/img/logo.svg" alt=""></a>
+            <a href="/" class="header_logo"><img src="/img/logo.svg" alt=""></a>
             <div class="header_right">
                 <div class="header_top">
                   <div class="header_quest">
@@ -68,7 +68,7 @@
                             <a href="javascript:;">Наши программы<div class="menu_arrow"></div></a>
                             <div class="sub_menu">
                                 <div class="sub_menu_list">
-                                    <a href="apartment.html" class="sub_link">Квартира</a>
+                                    <a href="apartment.html" class="sub_link">Недвижимость</a>
                                     <a href="auto.html" class="sub_link">Машина</a>
                                 </div>
                             </div>
@@ -84,7 +84,6 @@
         </div>
     </header> 
 
-   
 
     <?php echo $this->fetch('content'); ?>
 

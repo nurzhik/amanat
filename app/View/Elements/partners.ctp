@@ -10,12 +10,12 @@
                 
             </div>
             <div class="part_blog">
-                    <div class="part_arrow"></div>
-                    <div class="slider_number" role="toolbar">
-                        <span class="count part_total">1</span>
-                        <span >/</span>
-                        <span class="coun part_current">4</span>
-                    </div>
+                <div class="part_arrow"></div>
+                <div class="slider_number" role="toolbar">
+                    <span class="count part_total">1</span>
+                    <span >/</span>
+                    <span class="coun part_current">4</span>
+                </div>
             </div> 
         </div>
 </section>
