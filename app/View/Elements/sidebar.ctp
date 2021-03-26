@@ -13,7 +13,7 @@
 	</div>
 	<div class="personal_corpse">
 	    <a href="/<?=$lang?>users/my_turn" class="personal_item  queue <?= ($this->request->params['action'] == 'my_turn' ) ? 'active' : ''?>">Моя очередь</a>
-	     <a href="/<?=$lang?>users/my_turn_appartaments" class="personal_item  queue <?= ($this->request->params['action'] == 'my_turn_appartaments' ) ? 'active' : ''?>">Моя очередь Недвижимость</a>
+	     
 	    <a href="personal_payments.html" class="personal_item payments">Платежи</a>
 	    <a href="/<?=$lang?>users/appartaments" class="personal_item personal_item--property <?= ($this->request->params['action'] == 'appartaments' ) ? 'active' : ''?>">Недвижимость</a>
 	    <a href="/<?=$lang?>users/cars" class="personal_item transport <?= ($this->request->params['action'] == 'cars' ) ? 'active' : ''?>">транспорт</a>
