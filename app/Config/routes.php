@@ -60,6 +60,10 @@
 		array('controller' => 'users', 'action' => 'my_questionnaires'),
 		array('language' => '[a-z]{2}')
 	);
+	Router::connect('/:language/users/moderator_questionnaires', 
+		array('controller' => 'users', 'action' => 'moderator_questionnaires'),
+		array('language' => '[a-z]{2}')
+	);
 	Router::connect('/:language/users/my_question/*', 
 		array('controller' => 'users', 'action' => 'my_question'),
 		array('language' => '[a-z]{2}')
