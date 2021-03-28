@@ -8,11 +8,10 @@
                     <div class="personal_unit_title">Моя очередь</div>
                 </div>  
                 <div class="personal-top">
-                    <a class="personal-top__link personal-top__link--nedvizhimost personal-top__link--active" href="#">Недвижимость</a>                 
-                    <a class="personal-top__link personal-top__link--car" href="#">Машина</a>                              
+                    <a class="personal-top__link personal-top__link--car personal-top__link--active" href="">Транспорт</a>       
+                    <a class="personal-top__link personal-top__link--nedvizhimost" href="#">Недвижимость</a>                 
                 </div>                  
                 <div class="personal_pad">
-                    
                     <div class="cab-tab">
                         <ul class="ctab-ul">
                             <li>

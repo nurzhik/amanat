@@ -2352,6 +2352,8 @@ section.news_inner {
     height: 70px;
     margin-right: 20px;
     flex-shrink: 0;
+    border-radius: 50%;
+    overflow:hidden;
 }
 .personal_mind_img img{
     display: block;
@@ -2370,11 +2372,10 @@ section.news_inner {
     padding: 30px 40px 30px 90px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-weight: 500;
-    font-size: 16px;
-    line-height: 127.33%;
-    text-align: center;
+    font-size: 15px;
+    line-height: 127.33%;    
     letter-spacing: 0.02em;
-    text-transform: uppercase;
+    text-transform: uppercase;    
     color: #676B73;
     transition: .3s;
 }
@@ -2388,7 +2389,7 @@ section.news_inner {
 .personal_item::after{
     content: "";
     position: absolute;
-    left: 45px;
+    left: 38px;
     top: 50%;
     z-index: 1;
     transition: 0.4s;
@@ -3371,7 +3372,7 @@ input[type="checkbox"] {
         padding: 27px 27px 27px 37px;
     }
     .personal_item{
-        padding: 27px 37px 26px 90px;
+        padding: 24px 37px 24px 90px;
     }
     .personal_unit table thead tr th:first-child{
         padding-left: 35px;
