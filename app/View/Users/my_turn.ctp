@@ -8,12 +8,12 @@
                     <div class="personal_unit_title">Моя очередь</div>
                 </div>  
                 <div class="personal-top">
+                    <a class="personal-top__link personal-top__link--car personal-top__link--active" href="">Транспорт</a>       
+                    <a class="personal-top__link personal-top__link--nedvizhimost" href="#">Недвижимость</a>                 
                     <a class="personal-top__link personal-top__link--car <?= ($this->request->params['action'] == 'my_turn' ) ? 'personal-top__link--active' : ''?>" href="/<?=$lang?>users/my_turn">Машина</a>                 
-                    <a class="personal-top__link personal-top__link--nedvizhimost <?= ($this->request->params['action'] == 'my_turn_appartaments' ) ? 'personal-top__link--active' : ''?>" href="/<?=$lang?>users/my_turn_appartaments">Недвижимость</a>                 
-                                 
+                    <a class="personal-top__link personal-top__link--nedvizhimost <?= ($this->request->params['action'] == 'my_turn_appartaments' ) ? 'personal-top__link--active' : ''?>" href="/<?=$lang?>users/my_turn_appartaments">Недвижимость</a>                                           
                 </div>                  
                 <div class="personal_pad">
-                    
                     <div class="cab-tab">
                         <ul class="ctab-ul">
                            <?php foreach ($cars as $key => $item): ?>
