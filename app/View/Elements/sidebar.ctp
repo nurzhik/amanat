@@ -13,7 +13,7 @@
 	</div>
 	<div class="personal_corpse">
 		<?php if($login['role'] !='moderator'): ?>
-	    <a href="/<?=$lang?>users/my_turn" class="personal_item  queue <?= ($this->request->params['action'] == 'my_turn' ) ? 'active' : ''?>">Моя очередь</a>
+	    <a href="/<?=$lang?>users/my_turn" class="personal_item  queue <?= ($this->request->params['action'] == 'my_turn' || $this->request->params['action'] == 'my_turn_appartaments' ) ? 'active' : ''?>">Моя очередь</a>
 	     
 	    <a href="personal_payments.html" class="personal_item payments">Платежи</a>
 	    <a href="/<?=$lang?>users/appartaments" class="personal_item personal_item--property <?= ($this->request->params['action'] == 'appartaments' ) ? 'active' : ''?>">Недвижимость</a>
