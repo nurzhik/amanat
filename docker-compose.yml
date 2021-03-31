@@ -11,6 +11,7 @@ services:
     volumes:
       - .:/var/www/html/
       - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./php.ini:/usr/local/etc/php/php.ini
     environment:
       - SECURITY_SALT=1111
       - MYSQL_HOST=mysql
