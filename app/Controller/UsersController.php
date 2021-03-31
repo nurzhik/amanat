@@ -791,41 +791,45 @@ class UsersController extends AppController{
 				'conditions' => array('Responsible.user_id' => $user_id )
 			));	
 		}
-		$results['Result']['results'] = json_decode($results['Result']['results'], true);
-		// $signature = ;
-		$xmlsignature = $results['Result']['xmlsignature'];
-		$printxml = urlencode($results['Result']['xmlsignature']);
-		$xml= (array) json_decode(json_encode(simplexml_load_string($xmlsignature,null,LIBXML_NOCDATA)), true);
-		$signature = json_decode(urldecode($xml['Document']), true);
+		
 		$verifycation = "";
 		$isValidSign = false;
 		$commonName = '';
 		$iin = '';
 
-		$curl = curl_init();
+		if(array_key_exists('Result',$results)){
+			$results['Result']['results'] = json_decode($results['Result']['results'], true);
+			$xmlsignature = $results['Result']['xmlsignature'];
+			$printxml = urlencode($results['Result']['xmlsignature']);
+			$xml= (array) json_decode(json_encode(simplexml_load_string($xmlsignature,null,LIBXML_NOCDATA)), true);
+			$signature = json_decode(urldecode($xml['Document']), true);
 
-		curl_setopt_array($curl, array(
-		CURLOPT_URL => "http://78.40.109.145:14579/",
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING => "",
-		CURLOPT_MAXREDIRS => 10,
-		CURLOPT_TIMEOUT => 1000,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		CURLOPT_CUSTOMREQUEST => "POST",
-		CURLOPT_POSTFIELDS => json_encode(["version"=> "1.0", "method"=> "XML.verify", "params"=>["xml"=>$xmlsignature]]),
-		// "{\n    \"version\": \"1.0\",\n    \"method\": \"XML.verify\",\n    \"params\": {\n        \"xml\":\"".."\"\n    }\n}",
-		CURLOPT_HTTPHEADER => array(
-			"Content-Type: application/json"
-		),
-		));
-
-		$verifycation = json_decode(curl_exec($curl),true);
-		$isValidSign = $verifycation['status'] == 0 && $verifycation['result']['cert']['valid']==true ;
-		$commonName = $verifycation['result']['cert']['subject']['commonName'];
-		$iin = $verifycation['result']['cert']['subject']['iin'];
-
-		curl_close($curl);
+			if(trim($xmlsignature)!=''){
+				$curl = curl_init();
+				curl_setopt_array($curl, array(
+					CURLOPT_URL => "http://78.40.109.145:14579/",
+					CURLOPT_RETURNTRANSFER => true,
+					CURLOPT_ENCODING => "",
+					CURLOPT_MAXREDIRS => 10,
+					CURLOPT_TIMEOUT => 1000,
+					CURLOPT_FOLLOWLOCATION => true,
+					CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+					CURLOPT_CUSTOMREQUEST => "POST",
+					CURLOPT_POSTFIELDS => json_encode(["version"=> "1.0", "method"=> "XML.verify", "params"=>["xml"=>$xmlsignature]]),
+					// "{\n    \"version\": \"1.0\",\n    \"method\": \"XML.verify\",\n    \"params\": {\n        \"xml\":\"".."\"\n    }\n}",
+					CURLOPT_HTTPHEADER => array(
+						"Content-Type: application/json"
+					),
+					));
+			
+					$verifycation = json_decode(curl_exec($curl),true);
+					$isValidSign = $verifycation['status'] == 0 && $verifycation['result']['cert']['valid']==true ;
+					$commonName = $verifycation['result']['cert']['subject']['commonName'];
+					$iin = $verifycation['result']['cert']['subject']['iin'];
+			
+					curl_close($curl);
+			}
+		}
 		// debug($response);
 		// die;
 
@@ -934,9 +938,42 @@ class UsersController extends AppController{
 		
 		$results = json_encode($data['results'],JSON_UNESCAPED_UNICODE);
 		$signature = $this->request->data['signature'];
-		// var_dump($signature); die;
+
 
 		$questionnaire_id= $data['questionnaire_id'];
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => "http://78.40.109.145:14579/",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 1000,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => json_encode(["version"=> "1.0", "method"=> "XML.verify", "params"=>["xml"=>$signature]]),
+		// "{\n    \"version\": \"1.0\",\n    \"method\": \"XML.verify\",\n    \"params\": {\n        \"xml\":\"".."\"\n    }\n}",
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: application/json"
+		),
+		));
+
+		$verifycation = json_decode(curl_exec($curl),true);
+		curl_close($curl);
+		
+		$isValidSign = $verifycation['status'] == 0 && $verifycation['result']['cert']['valid']==true ;
+		$commonName = $verifycation['result']['cert']['subject']['commonName'];
+		$iin = $verifycation['result']['cert']['subject']['iin'];
+
+		if($user['iin'] != $iin){
+			// debug($user); die;
+			$this->Session->setFlash('Подпишите своим ЭЦП', 'default', array(), 'bad');
+			return $this->redirect("/users/my_question/".$questionnaire_id);
+		}
+
+		// var_dump($signature); die;
 		$q = "INSERT INTO results (user_id,results,questionnaire_id, xmlsignature) VALUES ('".$user_id."' ,  '".$results."' ,  '".$questionnaire_id."', '".$signature."')";
 		$this->User->query($q);
 		$this->Session->setFlash('Сохранено', 'default', array(), 'good');

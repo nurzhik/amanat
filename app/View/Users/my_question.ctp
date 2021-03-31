@@ -11,6 +11,7 @@
                     <a href="/users/my_questionnaires" class="questionnaire_inner_btn_back">Назад к выбору собрания</a>
                     <?php if(!empty($questions)): ?>
                     <form id="questions" action="/users/questionnairesend" method="POST">
+                        <?=$this->Session->flash('bad')?>
                         <input id="signature" type="hidden" name="data[signature]"/>
                         <input type="hidden" name="data[Question][questionnaire_id]"  value="<?=$data['Questionnaire']['id']?>">
                         <?php if(!empty($check_moderators)): ?>
