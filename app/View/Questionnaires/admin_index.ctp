@@ -68,6 +68,11 @@
     							</i>
     							Редактировать
     						</a>
+                <a class="btn btn-info btn-sm" href="/admin/questionnaires/result/<?=$item['Questionnaire']['id']?>">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Результат
+                </a>
               
     		
     						<?php echo $this->Form->postLink('Удалить', array('action' => 'admin_delete', $item['Questionnaire']['id']), array('confirm' => 'Подтвердите удаление','value'=>'465','class' => 'btn btn-danger btn-sm')); ?>

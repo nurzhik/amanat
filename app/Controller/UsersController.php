@@ -201,7 +201,7 @@ class UsersController extends AppController{
 			debug($user);
 		//	update
 			if($number == $user['User']['forgetpwd']){
-				$update = $this->User->query("UPDATE users SET active='activate' WHERE forgetpwd='{$number}'");
+				$update = $this->User->query("UPDATE users SET activation='activate' WHERE forgetpwd='{$number}'");
 				$this->Session->setFlash('Вы успешно активировали аккаунт', 'default', array(), 'good');
 				sleep(2);
 				debug($update);die;
@@ -221,7 +221,7 @@ class UsersController extends AppController{
 
 	public function registration(){
 		
-
+		$emailActivation = new CakeEmail('smtp');
 		if($this->request->is('post')){
 
 			$this->User->create();
@@ -241,16 +241,15 @@ class UsersController extends AppController{
 			$rand = rand(100000, 999999);
 			$data['forgetpwd']= $rand;
 			$data['active'] = 'deactivate';
- 			// $emailActivation->from(array('info@aritmology.kz' => 'aritmology.kz'))
-				// ->to($username)
-				// ->subject('Активация E-mail адреса');
-				// $messageACtivation = "<p>Для активации  перейдите по ссылке: <a href='https://aritmology.kz/users/activation/".$rand."'>https://aritmology.kz/users/activation</a></p>";
-				// $emailActivation->viewVars(array('content' => $messageACtivation));
-				// $emailActivation->template('welcome','default');
-				// $emailActivation->emailFormat('html');
-			//&& $emailActivation->send($messageACtivation)
+ 			$emailActivation->from(array('st-kotel.kz@yandex.ru' => 'newamanat.113.kz'))
+				->to($username)
+				->subject('Активация E-mail адреса');
+				$messageACtivation = "<p>Для активации  перейдите по ссылке: <a href='https://newamanat.113.kz/users/activation/".$rand."'>https://newamanat.113.kz/users/activation</a></p>";
+				$emailActivation->viewVars(array('content' => $messageACtivation));
+				$emailActivation->template('welcome','default');
+				$emailActivation->emailFormat('html');
 
-			if(empty($check_username)){
+			if(empty($check_username)  && $emailActivation->send($messageACtivation)){
 				// && $email->send($message
 				
 				if($this->User->save($data)){
@@ -519,9 +518,12 @@ class UsersController extends AppController{
 		if($this->request->is(array('post', 'put'))){
 			$this->User->id = $id;
 			$data1 = $this->request->data['User'];
+
 			if(empty($data1['password']) || !$data1['password']){
 				unset($data1['password']);
 				unset($data1['password_repeat']);
+				unset($data1['forgetpwd']);
+				unset($data1['username']);
 			}
 			if(empty($data1['img']['name']) || !$data1['img']['name']){
 				unset($data1['img']);
@@ -536,13 +538,13 @@ class UsersController extends AppController{
 			}
 		}
 		//Заполняем данные в форме
-		if(!$this->request->data){
-			$this->request->data = $data;
-			$title_for_layout = 'Личный кабинет';
-			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'member_type'));
-		}
-
-
+		// if(!$this->request->data){
+		// 	$this->request->data = $data;
+			
+			
+		// }
+		$title_for_layout = 'Личный кабинет';
+		$this->set(compact('id', 'data', 'user_id','title_for_layout', 'member_type'));
 	}
 
 	public function cars(){
@@ -742,6 +744,29 @@ class UsersController extends AppController{
 
 
 	}
+	public function moderator_questionnaires(){
+
+		if(!$this->Auth->user() ){
+			$lang = $this->Auth->locale = Configure::read('Config.language');
+			return $this->redirect('/'.$lang.'/users/login');
+		}
+		
+		$data = $this->Auth->user();
+		$user_id = $data['id'];
+		$check_moderators = $this->Responsible->find('first', array(
+			'conditions' => array('Responsible.moderator_id' => $user_id )
+		));	
+			$questionnaires = $this->Questionnaire->find('all');
+		
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$title_for_layout = 'Личный кабинет';
+			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'questionnaires','check_moderators'));
+		}
+
+
+	}
 	public function my_question($id){
 
 		if(!$this->Auth->user() ){
@@ -770,6 +795,50 @@ class UsersController extends AppController{
 			$results['Result']['results'] = json_decode($results['Result']['results'],true);
 		}
 			// debug($results);die;
+		// $id = $car['Car']['order_num'];
+		// $prevElement = $car['Car']['order_num'] - 3;
+		// $nextElement = $car['Car']['order_num'] + 3;
+		// debug($id);
+
+		// 
+		// $nextTurn = "SELECT * FROM cars WHERE cars.order_num > $id   ORDER BY id ASC LIMIT 2";			
+		// $selectPrev = $this->User->query($prevTurn);
+		// $selectNext = $this->User->query($nextTurn);
+		// debug($selectPrev);
+	
+		//debug($cars);die;
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			$title_for_layout = 'Личный кабинет';
+			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'questions','check_moderators','results'));
+		}
+
+
+	}
+	public function moderator_question($id){
+
+		if(!$this->Auth->user() ){
+			$lang = $this->Auth->locale = Configure::read('Config.language');
+			return $this->redirect('/'.$lang.'/users/login');
+		}
+		$data = $this->Questionnaire->findById($id);
+		if(!$data){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$user = $this->Auth->user();
+		$user_id = $user['id'];
+		$results = $this->Result->find('first',array(
+			'conditions' => array(array('Result.questionnaire_id' => $id),array('Result.moderator_id' => $user_id)),
+		));
+		
+		if(empty($results)){
+			$questions = $this->Question->find('all', array(
+				'conditions' => array('Question.questionnaire_id' => $id)
+			));
+		}
+		$results['Result']['results'] = json_decode($results['Result']['results'],true);
+		//	debug($results);die;
 		// $id = $car['Car']['order_num'];
 		// $prevElement = $car['Car']['order_num'] - 3;
 		// $nextElement = $car['Car']['order_num'] + 3;
@@ -835,6 +904,30 @@ class UsersController extends AppController{
 
 		return $this->redirect($this->referer());	
 	}
+	public function modeartoresend(){
+		$this->autoRender = false;
+		$user = $this->Auth->user();
+		$user_id = $user['id'];
+		
+		$data = $this->request->data['Question'];
+		$responsibles =$this->Responsible->find('all', array(
+			'conditions' => array('Responsible.moderator_id' => $user_id )
+		));	
+
+		//	debug($responsibles);die;
+		$results = json_encode($data['results'],JSON_UNESCAPED_UNICODE);
+
+		$questionnaire_id= $data['questionnaire_id'];
+		foreach ($responsibles as $item) {
+			$q = "INSERT INTO results (user_id,results,questionnaire_id,moderator_id,moderator_fio) VALUES ('".$item['Responsible']['user_id']."' ,  '".$results."' ,  '".$questionnaire_id."' ,  '".$item['Responsible']['moderator_id']."',  '".$item['Responsible']['moderator_fio']."')";
+			$this->User->query($q);
+		}
+		
+		
+		$this->Session->setFlash('Сохранено', 'default', array(), 'good');
+
+		return $this->redirect($this->referer());	
+	}
 	public function send_activation_email(){
 		$this->autoRender = false;
 		$data = $this->Auth->user();
@@ -858,7 +951,7 @@ class UsersController extends AppController{
 		$emailActivation->from(array('info@aritmology.kz' => 'aritmology.kz'))
 		->to($username)
 		->subject('Активация почты');
-		$messageACtivation = "<p>Для активации перейдите по ссылке: <a href='https://aritmology.kz/users/activation/".$rand."'>https://aritmology.kz/users/activation</a></p>";
+		$messageACtivation = "<p>Для активации перейдите по ссылке: <a href='https://newamanat.113.kz/users/activation/".$rand."'>https://newamanat.113/users/activation</a></p>";
 		$emailActivation->viewVars(array('content' => $messageACtivation));
 		$emailActivation->template('welcome','default');
 		$emailActivation->emailFormat('html');

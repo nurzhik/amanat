@@ -1,7 +1,7 @@
 <?php
 
 class QuestionnairesController  extends AppController{
-	public $uses = array('Category', 'Questionnaire','Question');
+	public $uses = array('Category', 'Questionnaire','Question','Result','Responsible');
 	public function admin_index(){
 
 		$data = $this->Questionnaire->find('all', array(
@@ -91,10 +91,83 @@ class QuestionnairesController  extends AppController{
 		}
 		$questions=$this->Question->find('all');
 		//Заполняем данные в форме
+
 		if(!$this->request->data){
 			$this->request->data = $data;
 			
 			$this->set(compact('id', 'data','questions'));
+		}
+	}
+	public function admin_result($id){
+		$all = $this->Questionnaire->find('all');
+		//debug($all);die;
+		if(is_null($id) || !(int)$id || !$this->Questionnaire->exists($id)){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$data = $this->Questionnaire->findById($id);
+		$questions = $this->Question->find('all',array(
+			'conditions' => array('Question.questionnaire_id' => $id),
+		));
+		$results=$this->Result->find('all',array(
+			'conditions' => array('Result.questionnaire_id' => $id),
+		));
+		
+		foreach ($results as $item) {
+			$users[]=$item['Result']['user_id'];
+		}
+		$users = $this->User->find('all',array(
+			'conditions' =>array('User.id' =>$users ),
+			'recursive' => -1,
+		));
+		//debug($users);die;
+		foreach ($results as $item) {
+			$item['Result']['results'] = json_decode($item['Result']['results'],true);
+			foreach ($item['Result']['results'] as $key => $result ) {
+				$total_results[$key]['question'] = $result['question'];
+				if($result['answer'] == 'Поддерживаю') {
+					$total_results[$key]['Поддерживаю'] += 1;
+				}else if ($result['answer'] == 'Не поддерживаю') {
+					$total_results[$key]['Не поддерживаю'] += 1;
+				}else {
+					$total_results[$key]['Воздерживаюсь от голоса'] += 1;
+				}
+			}
+			
+			
+		};
+		
+		 //debug($total_results);die;
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			
+			$this->set(compact('id', 'data','questions','total_results','users'));
+		}
+	}
+	public function admin_resultview($id,$user_id){
+	
+	
+		if(is_null($id) || !(int)$id || !$this->Questionnaire->exists($id)){
+			throw new NotFoundException('Такой страницы нет...');
+		}
+		$data = $this->Questionnaire->findById($id);
+		$questions = $this->Question->find('all',array(
+			'conditions' => array('Question.questionnaire_id' => $id),
+		));
+		$results=$this->Result->find('first',array(
+			'conditions' => array(array('Result.questionnaire_id' => $id),array('Result.user_id' => $user_id)),
+		));
+		
+		$results['Result']['results'] = json_decode($results['Result']['results'],true);
+
+		
+		
+		// debug($results);die;
+		//Заполняем данные в форме
+		if(!$this->request->data){
+			$this->request->data = $data;
+			
+			$this->set(compact('id', 'data','questions','total_results','results'));
 		}
 	}
 

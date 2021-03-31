@@ -6,6 +6,13 @@
 	Router::connect('/admin/requesthomes', array('controller' => 'pages', 'action' => 'requesthomes', 'admin' => true));
 	Router::connect('/admin/requestcars/edit/*', array('controller' => 'pages', 'action' => 'requestcars_edit','admin' => true));
 	Router::connect('/admin/requesthomes/edit/*', array('controller' => 'pages', 'action' => 'requesthomes_edit','admin' => true));
+
+
+
+		Router::connect('/admin/questionnaires/result/*', array('controller' => 'questionnaires', 'action' => 'result','admin' => true));
+	Router::connect('/admin/questionnaires/resultview/*', array('controller' => 'questionnaires', 'action' => 'resultview','admin' => true));
+
+
 	Router::connect('/admin/peoples', array('controller' => 'users', 'action' => 'peoples','admin' => true));
 	Router::connect('/admin/peoples/edit/*', array('controller' => 'users', 'action' => 'peoples_edit','admin' => true));
 	Router::connect('/feedback', array('controller' => 'feedbacks', 'action' => 'index'));
@@ -58,6 +65,10 @@
 	
 	Router::connect('/:language/users/my_questionnaires', 
 		array('controller' => 'users', 'action' => 'my_questionnaires'),
+		array('language' => '[a-z]{2}')
+	);
+	Router::connect('/:language/users/moderator_questionnaires', 
+		array('controller' => 'users', 'action' => 'moderator_questionnaires'),
 		array('language' => '[a-z]{2}')
 	);
 	Router::connect('/:language/users/my_question/*', 
