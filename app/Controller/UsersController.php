@@ -791,9 +791,44 @@ class UsersController extends AppController{
 				'conditions' => array('Responsible.user_id' => $user_id )
 			));	
 		}
-		if(!empty($results)){
-			$results['Result']['results'] = json_decode($results['Result']['results'],true);
-		}
+		$results['Result']['results'] = json_decode($results['Result']['results'], true);
+		// $signature = ;
+		$xmlsignature = $results['Result']['xmlsignature'];
+		$printxml = urlencode($results['Result']['xmlsignature']);
+		$xml= (array) json_decode(json_encode(simplexml_load_string($xmlsignature,null,LIBXML_NOCDATA)), true);
+		$signature = json_decode(urldecode($xml['Document']), true);
+		$verifycation = "";
+		$isValidSign = false;
+		$commonName = '';
+		$iin = '';
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => "http://78.40.109.145:14579/",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 1000,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => json_encode(["version"=> "1.0", "method"=> "XML.verify", "params"=>["xml"=>$xmlsignature]]),
+		// "{\n    \"version\": \"1.0\",\n    \"method\": \"XML.verify\",\n    \"params\": {\n        \"xml\":\"".."\"\n    }\n}",
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: application/json"
+		),
+		));
+
+		$verifycation = json_decode(curl_exec($curl),true);
+		$isValidSign = $verifycation['status'] == 0 && $verifycation['result']['cert']['valid']==true ;
+		$commonName = $verifycation['result']['cert']['subject']['commonName'];
+		$iin = $verifycation['result']['cert']['subject']['iin'];
+
+		curl_close($curl);
+		// debug($response);
+		// die;
+
 			// debug($results);die;
 		// $id = $car['Car']['order_num'];
 		// $prevElement = $car['Car']['order_num'] - 3;
@@ -811,7 +846,9 @@ class UsersController extends AppController{
 		if(!$this->request->data){
 			$this->request->data = $data;
 			$title_for_layout = 'Личный кабинет';
-			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'questions','check_moderators','results'));
+			$this->set(compact('id', 'data', 'user_id','title_for_layout', 'questions','check_moderators','results', 
+			'signature','xmlsignature','printxml','isValidSign', 'commonName','iin'
+		));
 		}
 
 
@@ -896,13 +933,15 @@ class UsersController extends AppController{
 		$data= $this->request->data['Question'];
 		
 		$results = json_encode($data['results'],JSON_UNESCAPED_UNICODE);
+		$signature = $this->request->data['signature'];
+		// var_dump($signature); die;
 
 		$questionnaire_id= $data['questionnaire_id'];
-		$q = "INSERT INTO results (user_id,results,questionnaire_id) VALUES ('".$user_id."' ,  '".$results."' ,  '".$questionnaire_id."')";
+		$q = "INSERT INTO results (user_id,results,questionnaire_id, xmlsignature) VALUES ('".$user_id."' ,  '".$results."' ,  '".$questionnaire_id."', '".$signature."')";
 		$this->User->query($q);
 		$this->Session->setFlash('Сохранено', 'default', array(), 'good');
 
-		return $this->redirect($this->referer());	
+		return $this->redirect("/users/my_questionnaires");	
 	}
 	public function modeartoresend(){
 		$this->autoRender = false;
