@@ -40,8 +40,7 @@
                              
                             </div>
                         <?php endforeach ?>
-                       
-                        <?php if(!$check_moderators): ?>
+                        <?php if($check_moderators): ?>
                              <button type="submit" class="main_btn ">Подписать</button>
                         <?php endif ?>
                     </form>

@@ -766,8 +766,10 @@ class UsersController extends AppController{
 				'conditions' => array('Responsible.user_id' => $user_id )
 			));	
 		}
+		if(!empty($results)){
 			$results['Result']['results'] = json_decode($results['Result']['results'],true);
-		//	debug($results);die;
+		}
+			// debug($results);die;
 		// $id = $car['Car']['order_num'];
 		// $prevElement = $car['Car']['order_num'] - 3;
 		// $nextElement = $car['Car']['order_num'] + 3;
