@@ -1,0 +1,33 @@
+version: '2'
+services:
+  cakephp:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.cakephp
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/var/www/html/
+      - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./php.ini:/usr/local/etc/php/php.ini
+    environment:
+      - SECURITY_SALT=1111
+      - MYSQL_HOST=mysql
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=admin
+    # command: tail -f /dev/null
+  mysql:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mysql
+    ports:
+      - "3030:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=amanat
+volumes:
+  mysql_data:
