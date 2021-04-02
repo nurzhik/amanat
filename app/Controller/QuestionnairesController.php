@@ -124,6 +124,7 @@ class QuestionnairesController  extends AppController{
 			$item['Result']['results'] = json_decode($item['Result']['results'],true);
 			foreach ($item['Result']['results'] as $key => $result ) {
 				$total_results[$key]['question'] = $result['question'];
+
 				if($result['answer'] == 'Поддерживаю') {
 					$total_results[$key]['Поддерживаю'] += 1;
 				}else if ($result['answer'] == 'Не поддерживаю') {

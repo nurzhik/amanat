@@ -17,19 +17,25 @@
                 </div>
             <?php endforeach ?>
         </div>
-        <ul class="pagination">     
-            <li><?php echo $this->Paginator->first('<<'); ?></li>
-            <!-- <ul class="pag_list"> -->
-            <?php echo $this->Paginator->numbers(
-                array(
-                    'separator' => '',
-                    'tag' => 'li',
-                    'modulus' => 4
-                    )
-            ); ?>
-            <!-- </ul> -->
-            <li><?php echo $this->Paginator->last('>>'); ?></li>
-        </ul>
+       <?php if($data): ?>
+            <div class="pagination">
+                <?php if($paginator['start']): ?>
+                    <a href="<?=$paginator['link']?>1" class="p_start pag_btn "> << </a>
+                <?php endif ?>
+
+                <?php if($paginator['prev']): ?>
+                    <a href="<?=$paginator['link']?><?=$paginator['prev']?>" class="p_prev pag_btn"> < </a>
+                <?php endif ?>
+                <span class="p_pages"><?=__('Страница')?> <?=$paginator['current_page']?> <?=__('из')?> <?=$paginator['count_pages']?></span>
+                <?php if($paginator['next']): ?>
+                    <a href="<?=$paginator['link']?><?=$paginator['next']?>" class="p_next pag_btn"> > </a>
+                <?php endif ?>
+
+                <?php if($paginator['end']): ?>
+                    <a href="<?=$paginator['link']?><?=$paginator['count_pages']?>" class="p_end pag_btn "> >> </a>
+                <?php endif ?>
+            </div>
+        <?php endif ?>
        <!--  <div class="pagination">
             <a class="pag pag_prev" href="javascript:;"></a>
             <a class="pag active" href="javascript:;">1</a>

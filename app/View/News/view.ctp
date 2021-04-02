@@ -28,43 +28,25 @@
             </div>
             <div class="news_inner_unit">
                 <div class="news_inner_share">
-                <div class="news_inner_shrink">
-                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink1.svg" alt=""></a>
-                    <div class="news_inner_shrink_item">
-                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
-                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
-                        <div class="news_data">16.08.2020</div>
-                    </div>
+                    <?php foreach ($other_news as $key => $item): ?>
+                        <?php if($key <= 3): ?>
+                            <div class="news_inner_shrink">
+                                <a href="/<?=$lang?>news/view/<?=$item['News']['alias']?>" class="news_inner_shrink_img"><img src="/img/news/<?=$item['News']['img']?>" alt=""></a>
+                                <div class="news_inner_shrink_item">
+                                    <a href="/<?=$lang?>news/view/<?=$item['News']['alias']?>" class="news_title"><?=$item['News']['title']?></a>
+                                    <div class="news_subtitle"><?=$item['News']['short_text']?></div>
+                                    <div class="news_data"><?php echo $this->Time->format($item['News']['date'], '%d.%m.%Y', 'invalid'); ?></div>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="news_inner_bottom">
+                                <a href="/<?=$lang?>news/view/<?=$item['News']['alias']?>" class="news_inner_bottom_img"><img src="/img/news/<?=$item['News']['img']?>" alt=""></a>
+                                <div class="news_data"><?php echo $this->Time->format($item['News']['date'], '%d.%m.%Y', 'invalid'); ?></div>
+                                <a href="/<?=$lang?>news/view/<?=$item['News']['alias']?>" class="news_title"><?=$item['News']['title']?></a>
+                            </div>
+                        <?php endif ?>
+                    <?php endforeach ?>
                 </div>
-                <div class="news_inner_shrink">
-                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink2.svg" alt=""></a>
-                    <div class="news_inner_shrink_item">
-                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
-                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
-                        <div class="news_data">16.08.2020</div>
-                    </div>
-                </div>
-                <div class="news_inner_shrink">
-                    <a href="javascript:;" class="news_inner_shrink_img"><img src="img/shrink3.svg" alt=""></a>
-                    <div class="news_inner_shrink_item">
-                        <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
-                        <div class="news_subtitle">Не следует, однако забывать, что новая модель организационной деятельности играет важную роль в формировании...</div>
-                        <div class="news_data">16.08.2020</div>
-                    </div>
-                </div>
-            </div>
-            <div class="news_inner_share">
-                <div class="news_inner_bottom">
-                    <a href="javascript:;" class="news_inner_bottom_img"><img src="img/news4.png" alt=""></a>
-                    <div class="news_data">16.08.2020</div>
-                    <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
-                </div>
-                <div class="news_inner_bottom">
-                    <a href="javascript:;" class="news_inner_bottom_img"><img src="img/news3.png" alt=""></a>
-                    <div class="news_data">16.08.2020</div>
-                    <a href="javascript:;" class="news_title">101-ая обладательница нового автомобиля</a>
-                </div>
-            </div>
             </div>
         </div>
     </div>

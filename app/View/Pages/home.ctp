@@ -98,7 +98,7 @@
             </div>
             </div>
             <div class="info_blog">
-                <div class="info_car"><img src="img/house.png" alt=""></div>
+                <div class="info_car"><img src="/img/house.png" alt=""></div>
                 <div class="info_think">
                     <div class="info_item">
                         <div class="info_title">Условия жилищной программы</div>                            
@@ -154,7 +154,7 @@
         <div class="branch_wrapper">
             <div class="branch_title">Наши филиалы</div>
             <div class="branch_subtitle">У нас имеется 22 филиала нашей компании по всему Казахстану, вы можете ознакомиться с их адресами перейдя по ссылке и  посетить удобный для вас филиал</div>
-            <a href="javascript:;" class="main_btn">Перейти к филиалам</a>
+            <a href="<?=$lang?>contacts" class="main_btn">Перейти к филиалам</a>
         </div>
     </div>
 </section>    

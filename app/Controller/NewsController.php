@@ -127,7 +127,7 @@ class NewsController extends AppController{
 			'offset' => $paginator['offset'],
 			'limit' => $paginator['per_page'],
 		));
-		//debug($data);
+		
 		$this->set(compact('data', 'title_for_layout','paginator'));
 	}
 	
@@ -142,7 +142,7 @@ class NewsController extends AppController{
 		$this->News->query("UPDATE `news` SET `view` = `view` + 1 WHERE `alias`='" . $alias . "'");
 		$other_news = $this->News->find('all', array(
 			'conditions' => array(array('News.id !=' => $data['News']['id'])),
-			'limit' => 6,
+			'limit' => 5,
 		));
 		$title_for_layout = $data['News']['title'];
 		$meta['keywords'] = $data['News']['keywords'];
